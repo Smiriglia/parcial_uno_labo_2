@@ -1,0 +1,12 @@
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\bin\Debug\net6.0\parcialUno.essentials.deps.json
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\bin\Debug\net6.0\parcialUno.essentials.dll
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\bin\Debug\net6.0\parcialUno.essentials.pdb
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.csproj.AssemblyReference.cache
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.AssemblyInfoInputs.cache
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.AssemblyInfo.cs
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.dll
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\refint\parcialUno.essentials.dll
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\parcialUno.essentials.pdb
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno.essentials\obj\Debug\net6.0\ref\parcialUno.essentials.dll
