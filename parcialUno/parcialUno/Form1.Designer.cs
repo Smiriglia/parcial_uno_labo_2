@@ -29,18 +29,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnIngresar = new Button();
             SuspendLayout();
+            // 
+            // btnIngresar
+            // 
+            btnIngresar.Location = new Point(138, 161);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(75, 23);
+            btnIngresar.TabIndex = 0;
+            btnIngresar.Text = "button1";
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnIngresar);
             Name = "Form1";
             Text = "Login";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnIngresar;
     }
 }
