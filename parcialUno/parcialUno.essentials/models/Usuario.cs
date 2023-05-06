@@ -1,4 +1,5 @@
-﻿using System;
+﻿using parcialUno.essentials.abstractas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    public class Usuario
+    public class Usuario : Transformable
     {
         private int _id;
         private string _nombre;
@@ -16,13 +17,23 @@ namespace parcialUno.essentials.models
         private string _sector;
 
 
-        public int Id { get { return _id; } }
+        public override int Id { get { return _id; } }
         public string Username { get { return _username; } }
         public string Password { get { return _password; } }
         public float Dinero { get { return _dinero; } }
         public string Nombre { get { return _nombre; } }
 
         public string Sector { get { return _sector; } set { _sector = value; } }
+
+        public Usuario(Dictionary<string, object> usuarioDict) :
+            this((int)(long)usuarioDict["id"],
+                (string) usuarioDict["nombre"],
+                (string)usuarioDict["username"],
+                (string) usuarioDict["password"],
+                (string) usuarioDict["sector"])
+        {
+            
+        }
 
         public Usuario(int id, string nombre, string username, string password, string sector)
         {
@@ -33,13 +44,9 @@ namespace parcialUno.essentials.models
             _sector = sector;
         }
 
-        public Usuario(int id, string nombre, string username, string password)
+        public Usuario(int id, string nombre, string username, string password) : this(id, nombre, username, password, "comprador")
         {
-            _id = id;
-            _nombre = nombre;
-            _username = username;
-            _password = password;
-            _sector = "comprador";
+            
         }
 
         public static bool ValidarUsuario(List<Usuario> usuarios, string username, string password)
@@ -77,6 +84,21 @@ namespace parcialUno.essentials.models
             sb.AppendLine($"Contraseña: {Password}");
             sb.AppendLine($"Dinero: {Dinero}");
             return sb.ToString();
+        }
+
+        public override Dictionary<string, object> ToDict()
+        {
+            Dictionary<string, object> usuarioDict = new()
+            {
+                {"id", Id},
+                {"username", Username},
+                {"password", Password},
+                {"dinero", Dinero },
+                {"nombre", Nombre },
+                {"sector", Sector }
+            };
+
+            return usuarioDict;
         }
     }
 }

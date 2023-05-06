@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    internal class Administrador : Usuario
+    public class Administrador : Usuario
     {
         public Administrador(int id, string nombre, string username, string password, string sector) : base(id, nombre, username, password, sector)
         {

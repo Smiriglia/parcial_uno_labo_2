@@ -1,4 +1,5 @@
-﻿using System;
+﻿using parcialUno.essentials.abstractas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    internal class Producto
+    internal class Producto : Transformable
     {
         private int _id;
         private string _nombre;
@@ -15,7 +16,7 @@ namespace parcialUno.essentials.models
         private List<string> _etiquetas;
         private string _imagePath;
 
-        public int Id { get { return _id; }}
+        public override int Id { get { return _id; }}
         public string Nombre { get { return _nombre; }}
         public string Descripcion { get { return _descripcion; }}
         public float Precio { get { return _precio; }}
@@ -53,6 +54,20 @@ namespace parcialUno.essentials.models
             return dinero + producto;
         }
 
+        public override Dictionary<string, object> ToDict()
+        {
+            Dictionary<string, object> productoDict = new()
+            {
+                {"id", Id},
+                {"nombre", Nombre },
+                {"descripcion", Descripcion },
+                {"precio", Precio },
+                {"etiquetas", Etiquetas },
+                {"imagePath",  ImagePath}
+            };
+
+            return productoDict;
+        }
 
     }
 }

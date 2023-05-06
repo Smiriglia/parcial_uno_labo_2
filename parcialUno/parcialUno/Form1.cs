@@ -7,19 +7,31 @@ namespace parcialUno
         public Form1()
         {
             InitializeComponent();
-            
-        }
-        public async Task AddAsync()
-        {
-            var value = await Fire.Add();
-            MessageBox.Show(value);
 
         }
 
         private async void btnIngresar_Click(object sender, EventArgs e)
         {
-            string nombre = await Fire.Add();
-            MessageBox.Show(nombre);
+            string username = txtUsuario.Text;
+            string password = txtPassword.Text;
+
+            if (await Fire.ContieneAsync("usuarios", username, "username"))
+            {
+                var usuarioDict = await Fire.GetAsync("usuarios", "username", username);
+                if ((string)usuarioDict["password"] == password)
+                {
+                    Usuario usuarioIngresado = new Usuario(usuarioDict);
+                    MessageBox.Show(usuarioIngresado.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("Error, Contraseña incorrecta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error, usuario inexistente");
+            }
         }
     }
 }
