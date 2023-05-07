@@ -1,4 +1,5 @@
 ﻿using parcialUno.essentials.abstractas;
+using parcialUno.essentials.utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    internal class Producto : Transformable
+    public class Producto : Transformable
     {
         private int _id;
         private string _nombre;
@@ -44,6 +45,17 @@ namespace parcialUno.essentials.models
             _imagePath = imagePath;
         }
 
+        public Producto(Dictionary<string, object> pDict) :
+            this(
+                (int)(long)pDict["id"],
+                (string)pDict["nombre"],
+                (string)pDict["descripcion"],
+                (float)(double)pDict["precio"],
+                Parser.ToStringList((List<object>)pDict["etiquetas"]),
+                (string)pDict["imagePath"]
+                )
+        {}
+
         public static float operator +(float dinero, Producto producto)
         {
             return dinero + producto.Precio;
@@ -53,6 +65,8 @@ namespace parcialUno.essentials.models
         {
             return dinero + producto;
         }
+
+
 
         public override Dictionary<string, object> ToDict()
         {

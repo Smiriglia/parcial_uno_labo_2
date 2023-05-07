@@ -39,3 +39,5 @@ C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug\net6.0-windows\System.Linq.Async.dll
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormPrincipal.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.Properties.Resources.resources
