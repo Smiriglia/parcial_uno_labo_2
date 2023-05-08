@@ -24,7 +24,33 @@ namespace parcialUno.essentials.models
         public DateTime Fecha { get { return _fecha; } }
 
         
+        public static Dictionary<string, float> CalcularRelevancia(List<VistaProducto> vpList)
+        {
+            Dictionary<string, float> valorPorEtiqueta = new Dictionary<string, float>();
+            float relevanciaPorFecha;
+            TimeSpan tiempoTranscurrido;
+            int mesesTranscurridos;
+            foreach (var vp in vpList)
+            {
+                tiempoTranscurrido = DateTime.Now - vp.Fecha;
+                //Cada 30 dias la relevancia de un producto visto se reduce
+                mesesTranscurridos = tiempoTranscurrido.Days / 30;
+                relevanciaPorFecha = 1 / mesesTranscurridos + 1;
+                foreach(string etiqueta in vp.Etiquetas)
+                {
 
+                    if (valorPorEtiqueta.ContainsKey(etiqueta))
+                    {
+                        valorPorEtiqueta[etiqueta] += relevanciaPorFecha;
+                    }
+                    else
+                    {
+                        valorPorEtiqueta.Add(etiqueta, relevanciaPorFecha);
+                    }
+                }
+            }
+            return valorPorEtiqueta;
+        }
 
         public VistaProducto(int id, int idUsuario, int idProducto, List<string> etiquetas, DateTime fecha)
         {

@@ -16,13 +16,16 @@ namespace parcialUno.essentials.models
         private float _precio;
         private List<string> _etiquetas;
         private string _imagePath;
+        private float _relevanciaProducto = 0;
 
-        public override int Id { get { return _id; }}
-        public string Nombre { get { return _nombre; }}
-        public string Descripcion { get { return _descripcion; }}
-        public float Precio { get { return _precio; }}
-        public List<string> Etiquetas { get { return _etiquetas; }}
-        public string ImagePath { get { return _imagePath; }}
+        public override int Id { get { return _id; } }
+        public string Nombre { get { return _nombre; } }
+        public string Descripcion { get { return _descripcion; } }
+        public float Precio { get { return _precio; } }
+        public List<string> Etiquetas { get { return _etiquetas; } }
+        public string ImagePath { get { return _imagePath; } }
+
+        public float RelevanciaProducto { get { return _relevanciaProducto; } set { _relevanciaProducto = value; } } 
 
         public static float CalcularPrecio(List<Producto> productos)
         {
@@ -32,6 +35,21 @@ namespace parcialUno.essentials.models
                 acumuladorPrecio += producto;
             }
             return acumuladorPrecio;
+        }
+
+        public static void CalcularRelevancia(List<Producto> productos, Dictionary<string, float> dictRelevancia)
+        {
+            foreach (Producto producto in productos)
+            {
+                producto.RelevanciaProducto = 0;
+                foreach (string etiqueta in producto.Etiquetas)
+                {
+                    if (dictRelevancia.ContainsKey(etiqueta))
+                    {
+                        producto.RelevanciaProducto += dictRelevancia[etiqueta];
+                    }
+                }
+            }
         }
 
 

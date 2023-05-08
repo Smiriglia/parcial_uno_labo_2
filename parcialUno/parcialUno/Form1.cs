@@ -21,11 +21,12 @@ namespace parcialUno
 
                 if (await Fire.ContieneAsync("usuarios", username, "username"))
                 {
-                    var usuarioDict = await Fire.GetAsync("usuarios", "username", username);
+                    var usuarioDict = await Fire.GetOneAsync("usuarios", "username", username);
                     if ((string)usuarioDict["password"] == password)
                     {
                         Usuario usuarioIngresado = new Usuario(usuarioDict);
                         FormPrincipal nuevoFormulario = new FormPrincipal(usuarioIngresado);
+                        this.Hide();
                         nuevoFormulario.ShowDialog();
                     }
                     else

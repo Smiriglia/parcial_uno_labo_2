@@ -14,7 +14,48 @@ namespace parcialUno.essentials.models
 {
     public class Fire
     {
-        public static async Task<Dictionary<string, object>>? GetAsync(string coleccion, string clave, object valor)
+        public async static Task<List<Dictionary<string, object>>> GetAsync(string coleccion)
+        {
+            string projectId = "parcialuno-b8508";
+            FirestoreDb db = FirestoreDb.Create(projectId);
+            List<Dictionary<string, object>> documentosDict = new List<Dictionary<string, object>>();
+
+            var colref = db.Collection(coleccion);
+
+            QuerySnapshot snapshot = await colref.GetSnapshotAsync();
+
+            var docs = snapshot.Documents;
+
+            foreach (var doc in docs)
+            {
+                documentosDict.Add(doc.ToDictionary());
+            }
+
+            return documentosDict;
+        }
+        public async static Task<List<Dictionary<string, object>>> GetAsync(string coleccion, string clave, object valor)
+        {
+            string projectId = "parcialuno-b8508";
+            FirestoreDb db = FirestoreDb.Create(projectId);
+            List<Dictionary<string, object>> documentosDict = new List<Dictionary<string, object>>();
+
+            var colref = db.Collection(coleccion);
+
+            var query = colref.WhereEqualTo(clave, valor);
+
+            var resultado = await query.GetSnapshotAsync();
+
+            var docs = resultado.Documents;
+
+            foreach (var doc in docs)
+            {
+                documentosDict.Add(doc.ToDictionary());
+            }
+
+
+            return documentosDict;
+        }
+        public static async Task<Dictionary<string, object>>? GetOneAsync(string coleccion, string clave, object valor)
         {
             string projectId = "parcialuno-b8508";
             FirestoreDb db = FirestoreDb.Create(projectId);
