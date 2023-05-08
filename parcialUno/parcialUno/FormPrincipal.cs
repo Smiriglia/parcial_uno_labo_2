@@ -16,10 +16,14 @@ namespace parcialUno
     {
         private Usuario _usuario;
         private List<Producto> _productos = new List<Producto>();
+        private bool _menuExpand = false;
         public FormPrincipal(Usuario usuario)
         {
             _usuario = usuario;
             InitializeComponent();
+            contenedorMenu.Width = contenedorMenu.MinimumSize.Width;
+            labelNombre.Text = _usuario.Nombre;
+            labelDinero.Text = $"$ {_usuario.Dinero:F2}";
             if (usuario.Sector != "comprador")
             {
                 //TODO ADMIN MENU
@@ -66,6 +70,44 @@ namespace parcialUno
         private void imgCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void imgMenu_Click(object sender, EventArgs e)
+        {
+            //DialogResult = DialogResult.OK;
+
+        }
+
+        private void timerMenu_Tick(object sender, EventArgs e)
+        {
+            if (_menuExpand)
+            {
+                contenedorMenu.Width -= 10;
+                if (contenedorMenu.Width <= contenedorMenu.MinimumSize.Width)
+                {
+                    timerMenu.Stop();
+                }
+            }
+            else
+            {
+                contenedorMenu.Width += 10;
+                if (contenedorMenu.Width >= contenedorMenu.MaximumSize.Width)
+                {
+                    timerMenu.Stop();
+                }
+            }
+        }
+
+        private void contenedorMenu_MouseEnter(object sender, EventArgs e)
+        {
+            _menuExpand = false;
+            timerMenu.Start();
+        }
+
+        private void contenedorMenu_MouseLeave(object sender, EventArgs e)
+        {
+            _menuExpand = true;
+            timerMenu.Start();
         }
     }
 }

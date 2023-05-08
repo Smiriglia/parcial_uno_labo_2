@@ -35,7 +35,7 @@ namespace parcialUno.essentials.models
                 tiempoTranscurrido = DateTime.Now - vp.Fecha;
                 //Cada 30 dias la relevancia de un producto visto se reduce
                 mesesTranscurridos = tiempoTranscurrido.Days / 30;
-                relevanciaPorFecha = 1 / mesesTranscurridos + 1;
+                relevanciaPorFecha = 1 / (mesesTranscurridos + 1);
                 foreach(string etiqueta in vp.Etiquetas)
                 {
 

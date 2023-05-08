@@ -58,6 +58,8 @@
             labelNombre.Size = new Size(208, 39);
             labelNombre.TabIndex = 1;
             labelNombre.Text = "Samsung S21";
+            labelNombre.MouseEnter += ProductoUC_MouseEnter;
+            labelNombre.MouseLeave += ProductoUC_MouseLeave;
             // 
             // labelPrecio
             // 
@@ -68,6 +70,8 @@
             labelPrecio.Size = new Size(79, 29);
             labelPrecio.TabIndex = 2;
             labelPrecio.Text = "$ 1950";
+            labelPrecio.MouseEnter += ProductoUC_MouseEnter;
+            labelPrecio.MouseLeave += ProductoUC_MouseLeave;
             // 
             // tableLayoutPanel1
             // 

@@ -28,6 +28,10 @@ namespace parcialUno
                         FormPrincipal nuevoFormulario = new FormPrincipal(usuarioIngresado);
                         this.Hide();
                         nuevoFormulario.ShowDialog();
+                        if (nuevoFormulario.DialogResult == DialogResult.OK)
+                        {
+                            this.Show();
+                        }
                     }
                     else
                     {

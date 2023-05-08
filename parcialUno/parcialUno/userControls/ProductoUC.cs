@@ -20,7 +20,7 @@ namespace parcialUno.userControls
             _producto = producto;
             InitializeComponent();
             labelNombre.Text = producto.Nombre;
-            labelPrecio.Text = $"$ {producto.Precio}";
+            labelPrecio.Text = $"$ {producto.Precio:F2}";
             imgProducto.Image = Image.FromFile(_producto.ImagePath);
         }
 
