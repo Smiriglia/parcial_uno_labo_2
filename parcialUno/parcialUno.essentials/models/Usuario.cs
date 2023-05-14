@@ -30,19 +30,23 @@ namespace parcialUno.essentials.models
                 (string) usuarioDict["nombre"],
                 (string)usuarioDict["username"],
                 (string) usuarioDict["password"],
-                (string) usuarioDict["sector"])
-        {
-            
-        }
+                (string) usuarioDict["sector"],
+                (float)(double) usuarioDict["dinero"])
+        {}
 
-        public Usuario(int id, string nombre, string username, string password, string sector)
+        public Usuario(int id, string nombre, string username, string password, string sector, float dinero)
         {
             _id = id;
             _nombre = nombre;
             _username = username;
             _password = password;
             _sector = sector;
+            _dinero = dinero;
         }
+
+        public Usuario(int id, string nombre, string username, string password, string sector) : 
+            this(id, nombre, username, password, sector, 0.0f)
+        {}
 
         public Usuario(int id, string nombre, string username, string password) : this(id, nombre, username, password, "comprador")
         {

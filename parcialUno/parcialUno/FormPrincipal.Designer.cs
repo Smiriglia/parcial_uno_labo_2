@@ -33,28 +33,43 @@
             containerProductos = new FlowLayoutPanel();
             imgCerrar = new PictureBox();
             contenedorMenu = new TableLayoutPanel();
+            contenedorVender = new FlowLayoutPanel();
+            imgVender = new PictureBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            labelVender = new Label();
             imgMenu1 = new PictureBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
             pictureBox1 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             labelDinero = new Label();
             labelNombre = new Label();
+            contenedorSalir = new FlowLayoutPanel();
+            imgSalir = new PictureBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            labelSalir = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             timerMenu = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)imgCerrar).BeginInit();
             contenedorMenu.SuspendLayout();
+            contenedorVender.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgVender).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgMenu1).BeginInit();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
+            contenedorSalir.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgSalir).BeginInit();
+            tableLayoutPanel3.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // containerProductos
             // 
+            containerProductos.AutoScroll = true;
             containerProductos.Location = new Point(214, 3);
             containerProductos.Name = "containerProductos";
-            containerProductos.Size = new Size(549, 450);
+            containerProductos.Size = new Size(528, 450);
             containerProductos.TabIndex = 0;
             // 
             // imgCerrar
@@ -76,8 +91,10 @@
             contenedorMenu.ColumnCount = 1;
             contenedorMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             contenedorMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            contenedorMenu.Controls.Add(contenedorVender, 0, 2);
             contenedorMenu.Controls.Add(imgMenu1, 0, 0);
             contenedorMenu.Controls.Add(flowLayoutPanel2, 0, 1);
+            contenedorMenu.Controls.Add(contenedorSalir, 0, 3);
             contenedorMenu.Location = new Point(3, 3);
             contenedorMenu.MaximumSize = new Size(205, 459);
             contenedorMenu.MinimumSize = new Size(85, 459);
@@ -85,12 +102,72 @@
             contenedorMenu.RowCount = 4;
             contenedorMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 57.1428566F));
             contenedorMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 42.8571434F));
-            contenedorMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
-            contenedorMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 185F));
+            contenedorMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 195F));
+            contenedorMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 68F));
             contenedorMenu.Size = new Size(205, 459);
             contenedorMenu.TabIndex = 0;
             contenedorMenu.MouseEnter += contenedorMenu_MouseEnter;
             contenedorMenu.MouseLeave += contenedorMenu_MouseLeave;
+            // 
+            // contenedorVender
+            // 
+            contenedorVender.BackColor = Color.Transparent;
+            contenedorVender.BorderStyle = BorderStyle.FixedSingle;
+            contenedorVender.Controls.Add(imgVender);
+            contenedorVender.Controls.Add(tableLayoutPanel2);
+            contenedorVender.Cursor = Cursors.Hand;
+            contenedorVender.ForeColor = Color.Black;
+            contenedorVender.Location = new Point(3, 199);
+            contenedorVender.Name = "contenedorVender";
+            contenedorVender.Size = new Size(199, 57);
+            contenedorVender.TabIndex = 0;
+            contenedorVender.Click += contenedorVender_Click;
+            contenedorVender.MouseEnter += contenedorVender_MouseEnter;
+            contenedorVender.MouseLeave += contenedorVender_MouseLeave;
+            // 
+            // imgVender
+            // 
+            imgVender.BackColor = Color.Transparent;
+            imgVender.BackgroundImageLayout = ImageLayout.None;
+            imgVender.Image = (Image)resources.GetObject("imgVender.Image");
+            imgVender.Location = new Point(3, 3);
+            imgVender.Name = "imgVender";
+            imgVender.Size = new Size(71, 48);
+            imgVender.SizeMode = PictureBoxSizeMode.Zoom;
+            imgVender.TabIndex = 12;
+            imgVender.TabStop = false;
+            imgVender.Click += contenedorVender_Click;
+            imgVender.MouseEnter += contenedorVender_MouseEnter;
+            imgVender.MouseLeave += contenedorMenu_MouseLeave;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(labelVender, 0, 1);
+            tableLayoutPanel2.Location = new Point(80, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 29.166666F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 70.8333359F));
+            tableLayoutPanel2.Size = new Size(112, 48);
+            tableLayoutPanel2.TabIndex = 13;
+            tableLayoutPanel2.Click += contenedorVender_Click;
+            tableLayoutPanel2.MouseEnter += contenedorVender_MouseEnter;
+            tableLayoutPanel2.MouseLeave += contenedorMenu_MouseLeave;
+            // 
+            // labelVender
+            // 
+            labelVender.AutoSize = true;
+            labelVender.Font = new Font("Bahnschrift", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelVender.Location = new Point(3, 14);
+            labelVender.Name = "labelVender";
+            labelVender.Size = new Size(54, 18);
+            labelVender.TabIndex = 13;
+            labelVender.Text = "Vender";
+            labelVender.Click += contenedorVender_Click;
+            labelVender.MouseEnter += contenedorVender_MouseEnter;
+            labelVender.MouseLeave += contenedorMenu_MouseLeave;
             // 
             // imgMenu1
             // 
@@ -110,9 +187,9 @@
             flowLayoutPanel2.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel2.Controls.Add(pictureBox1);
             flowLayoutPanel2.Controls.Add(tableLayoutPanel1);
-            flowLayoutPanel2.Location = new Point(3, 116);
+            flowLayoutPanel2.Location = new Point(3, 115);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(199, 79);
+            flowLayoutPanel2.Size = new Size(199, 78);
             flowLayoutPanel2.TabIndex = 9;
             flowLayoutPanel2.MouseEnter += contenedorMenu_MouseEnter;
             // 
@@ -166,6 +243,66 @@
             labelNombre.Text = "Fausto";
             labelNombre.MouseEnter += contenedorMenu_MouseEnter;
             // 
+            // contenedorSalir
+            // 
+            contenedorSalir.BackColor = Color.Transparent;
+            contenedorSalir.BorderStyle = BorderStyle.FixedSingle;
+            contenedorSalir.Controls.Add(imgSalir);
+            contenedorSalir.Controls.Add(tableLayoutPanel3);
+            contenedorSalir.Cursor = Cursors.Hand;
+            contenedorSalir.ForeColor = Color.Black;
+            contenedorSalir.Location = new Point(3, 394);
+            contenedorSalir.Name = "contenedorSalir";
+            contenedorSalir.Size = new Size(199, 57);
+            contenedorSalir.TabIndex = 0;
+            contenedorSalir.Click += contenedorSalir_Click;
+            contenedorSalir.MouseEnter += contenedorVender_MouseEnter;
+            contenedorSalir.MouseLeave += contenedorVender_MouseLeave;
+            // 
+            // imgSalir
+            // 
+            imgSalir.BackColor = Color.Transparent;
+            imgSalir.BackgroundImageLayout = ImageLayout.None;
+            imgSalir.Image = (Image)resources.GetObject("imgSalir.Image");
+            imgSalir.Location = new Point(3, 3);
+            imgSalir.Name = "imgSalir";
+            imgSalir.Size = new Size(71, 48);
+            imgSalir.SizeMode = PictureBoxSizeMode.Zoom;
+            imgSalir.TabIndex = 12;
+            imgSalir.TabStop = false;
+            imgSalir.Click += contenedorSalir_Click;
+            imgSalir.MouseEnter += contenedorVender_MouseEnter;
+            imgSalir.MouseLeave += contenedorMenu_MouseLeave;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(labelSalir, 0, 1);
+            tableLayoutPanel3.Location = new Point(80, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 29.166666F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 70.8333359F));
+            tableLayoutPanel3.Size = new Size(112, 48);
+            tableLayoutPanel3.TabIndex = 13;
+            tableLayoutPanel3.Click += contenedorSalir_Click;
+            tableLayoutPanel3.MouseEnter += contenedorVender_MouseEnter;
+            tableLayoutPanel3.MouseLeave += contenedorMenu_MouseLeave;
+            // 
+            // labelSalir
+            // 
+            labelSalir.AutoSize = true;
+            labelSalir.Font = new Font("Bahnschrift", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelSalir.Location = new Point(3, 14);
+            labelSalir.Name = "labelSalir";
+            labelSalir.Size = new Size(100, 18);
+            labelSalir.TabIndex = 13;
+            labelSalir.Text = "Cerrar Sesion";
+            labelSalir.Click += contenedorSalir_Click;
+            labelSalir.MouseEnter += contenedorVender_MouseEnter;
+            labelSalir.MouseLeave += contenedorMenu_MouseLeave;
+            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(contenedorMenu);
@@ -194,11 +331,19 @@
             Load += FormPrincipal_Load;
             ((System.ComponentModel.ISupportInitialize)imgCerrar).EndInit();
             contenedorMenu.ResumeLayout(false);
+            contenedorVender.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgVender).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)imgMenu1).EndInit();
             flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            contenedorSalir.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgSalir).EndInit();
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -218,5 +363,13 @@
         private FlowLayoutPanel flowLayoutPanel3;
         private PictureBox imgMenu;
         private PictureBox imgMenu1;
+        private PictureBox imgVender;
+        private FlowLayoutPanel contenedorVender;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label labelVender;
+        private FlowLayoutPanel contenedorSalir;
+        private PictureBox imgSalir;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Label labelSalir;
     }
 }

@@ -46,6 +46,7 @@
             imgProducto.SizeMode = PictureBoxSizeMode.Zoom;
             imgProducto.TabIndex = 0;
             imgProducto.TabStop = false;
+            imgProducto.Click += ProductoUC_Click;
             imgProducto.MouseEnter += ProductoUC_MouseEnter;
             imgProducto.MouseLeave += ProductoUC_MouseLeave;
             // 
@@ -58,6 +59,7 @@
             labelNombre.Size = new Size(208, 39);
             labelNombre.TabIndex = 1;
             labelNombre.Text = "Samsung S21";
+            labelNombre.Click += ProductoUC_Click;
             labelNombre.MouseEnter += ProductoUC_MouseEnter;
             labelNombre.MouseLeave += ProductoUC_MouseLeave;
             // 
@@ -70,6 +72,7 @@
             labelPrecio.Size = new Size(79, 29);
             labelPrecio.TabIndex = 2;
             labelPrecio.Text = "$ 1950";
+            labelPrecio.Click += ProductoUC_Click;
             labelPrecio.MouseEnter += ProductoUC_MouseEnter;
             labelPrecio.MouseLeave += ProductoUC_MouseLeave;
             // 
@@ -87,6 +90,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(304, 102);
             tableLayoutPanel1.TabIndex = 4;
+            tableLayoutPanel1.Click += ProductoUC_Click;
             tableLayoutPanel1.MouseEnter += ProductoUC_MouseEnter;
             tableLayoutPanel1.MouseLeave += ProductoUC_MouseLeave;
             // 
@@ -101,6 +105,7 @@
             Cursor = Cursors.Hand;
             Name = "ProductoUC";
             Size = new Size(492, 148);
+            Click += ProductoUC_Click;
             MouseEnter += ProductoUC_MouseEnter;
             MouseLeave += ProductoUC_MouseLeave;
             ((System.ComponentModel.ISupportInitialize)imgProducto).EndInit();

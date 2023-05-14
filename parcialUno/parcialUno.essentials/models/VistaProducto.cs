@@ -63,6 +63,7 @@ namespace parcialUno.essentials.models
 
         public VistaProducto(int id, int idUsuario, int idProducto, List<string> etiquetas) : this(id, idUsuario, idProducto, etiquetas, DateTime.Now) {}
 
+        public VistaProducto(int id, int idUsuario, Producto producto) : this(id, idUsuario, producto.Id, producto.Etiquetas, DateTime.Now) { }
         public VistaProducto(Dictionary<string, object> vpDict) :
             this(
                 (int)(long)vpDict["id"],

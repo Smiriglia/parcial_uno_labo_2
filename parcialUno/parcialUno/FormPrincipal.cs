@@ -3,12 +3,23 @@ using parcialUno.userControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Google.Api.Distribution.Types;
+using static System.Net.Mime.MediaTypeNames;
+using Google.Rpc;
+using Google.Type;
+using System.Runtime.Intrinsics.Arm;
+using Google.Protobuf.WellKnownTypes;
+using Microsoft.VisualBasic.Devices;
+using Microsoft.VisualBasic.Logging;
+using System.Security.Policy;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace parcialUno
 {
@@ -55,13 +66,13 @@ namespace parcialUno
             dictRelevancia = VistaProducto.CalcularRelevancia(listaVistaProducto);
             Producto.CalcularRelevancia(productosDesordenados, dictRelevancia);
 
-            _productos = productosDesordenados.OrderBy(p => p.RelevanciaProducto).ToList();
+            _productos = productosDesordenados.OrderByDescending(p => p.RelevanciaProducto).ToList();
 
 
 
             foreach (var producto in _productos)
             {
-                nuevoProductoUC = new ProductoUC(producto);
+                nuevoProductoUC = new ProductoUC(producto, _usuario.Id);
                 containerProductos.Controls.Add(nuevoProductoUC);
             }
 
@@ -69,15 +80,13 @@ namespace parcialUno
 
         private void imgCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void imgMenu_Click(object sender, EventArgs e)
         {
-            //DialogResult = DialogResult.OK;
 
         }
-
         private void timerMenu_Tick(object sender, EventArgs e)
         {
             if (_menuExpand)
@@ -108,6 +117,50 @@ namespace parcialUno
         {
             _menuExpand = true;
             timerMenu.Start();
+        }
+
+        private static FlowLayoutPanel EncontrarFLPadre(object sender)
+        {
+            Control aux = (Control)sender;
+
+            while (true)
+            {
+                if (aux.GetType() == typeof(FlowLayoutPanel))
+                    break;
+                aux = aux.Parent;
+            }
+            return (FlowLayoutPanel)aux;
+        }
+        private void contenedorVender_MouseEnter(object sender, EventArgs e)
+        {
+            FlowLayoutPanel senderCasteado = EncontrarFLPadre(sender);
+
+            contenedorMenu_MouseEnter(sender, e);
+            senderCasteado.ForeColor = System.Drawing.Color.WhiteSmoke;
+            senderCasteado.BackColor = System.Drawing.Color.Silver;
+        }
+
+        private void contenedorVender_MouseLeave(object sender, EventArgs e)
+        {
+            FlowLayoutPanel senderCasteado = EncontrarFLPadre(sender);
+            contenedorMenu_MouseEnter(sender, e);
+            senderCasteado.ForeColor = System.Drawing.Color.Black;
+            senderCasteado.BackColor = System.Drawing.Color.Transparent;
+        }
+
+        private void contenedorVender_Click(object sender, EventArgs e)
+        {
+            var formVenta = new FormVenta();
+            formVenta.ShowDialog();
+            if (formVenta.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Tu producto fue enviado correctamente y esta en revision");
+            }
+        }
+
+        private void contenedorSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

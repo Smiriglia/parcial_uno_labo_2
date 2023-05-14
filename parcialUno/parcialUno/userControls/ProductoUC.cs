@@ -14,10 +14,12 @@ namespace parcialUno.userControls
 {
     public partial class ProductoUC : UserControl
     {
+        private int _idUsuario;
         private Producto _producto;
-        public ProductoUC(Producto producto)
+        public ProductoUC(Producto producto, int idUsuario)
         {
             _producto = producto;
+            _idUsuario = idUsuario;
             InitializeComponent();
             labelNombre.Text = producto.Nombre;
             labelPrecio.Text = $"$ {producto.Precio:F2}";
@@ -32,6 +34,13 @@ namespace parcialUno.userControls
         private void ProductoUC_MouseLeave(object sender, EventArgs e)
         {
             ForeColor = Color.Black;
+        }
+
+        private async void ProductoUC_Click(object sender, EventArgs e)
+        {
+            int idVistaProducto = await Fire.GetUltimoIdAsync("vistaProductos") + 1;
+            VistaProducto nuevaVP = new VistaProducto(idVistaProducto, _idUsuario, _producto);
+            await Fire.AddAsync("vistaProductos", nuevaVP);
         }
     }
 }
