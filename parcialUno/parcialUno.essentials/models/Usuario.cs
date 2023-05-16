@@ -52,33 +52,6 @@ namespace parcialUno.essentials.models
             this(id, nombre, username, password, "comprador")
         {}
 
-        public static bool ValidarUsuario(List<Usuario> usuarios, string username, string password)
-        {
-
-            foreach (Usuario usuario in usuarios)
-            {
-                if (usuario.login(username, password))
-                    return true;
-            }
-            return false;
-        }
-
-        public static Usuario? BuscarUsuario(List<Usuario> usuarios, string username, string password)
-        {
-
-            foreach (Usuario usuario in usuarios)
-            {
-                if (usuario.login(username, password))
-                    return usuario;
-            }
-            return null;
-        }
-
-        public bool login(string username, string password)
-        {
-            return username == _username && password == _password;
-        }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

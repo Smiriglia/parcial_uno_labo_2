@@ -40,17 +40,14 @@ namespace parcialUno
 
         private void btnOcultar_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show($"{txtPassword.PasswordChar}");
             if (txtPassword.PasswordChar == (char)0)
             {
                 btnOcultar.BackgroundImage = Properties.Resources.mostrar_contrasenia;
-                //btnOcultar.BackgroundImageLayout = ImageLayout.Stretch;
                 txtPassword.PasswordChar = '•';
             }
             else
             {
                 btnOcultar.BackgroundImage = Properties.Resources.ocultar_contrasenia;
-                //btnOcultar.BackgroundImageLayout = ImageLayout.Stretch;
                 txtPassword.PasswordChar = (char)0;
             }
         }

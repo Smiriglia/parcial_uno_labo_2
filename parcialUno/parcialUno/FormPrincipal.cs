@@ -20,17 +20,18 @@ using Microsoft.VisualBasic.Devices;
 using Microsoft.VisualBasic.Logging;
 using System.Security.Policy;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using parcialUno.essentials.utilidades;
 
 namespace parcialUno
 {
     public partial class FormPrincipal : Form
     {
         private Usuario _usuario;
-        private List<Producto> _productos = new List<Producto>();
-        private List<Producto> _carrito = new List<Producto>();
+        private ListaProductos _productos = new ListaProductos();
+        private ListaProductos _carrito = new ListaProductos();
         private bool _menuExpand = false;
 
-        public List<Producto> Carrito { get { return _carrito; } }
+        public ListaProductos Carrito { get { return _carrito; } }
         public FormPrincipal(Usuario usuario)
         {
             _usuario = usuario;
@@ -47,40 +48,16 @@ namespace parcialUno
 
         private async void FormPrincipal_Load(object sender, EventArgs e)
         {
-            ProductoFire productoFire = new ProductoFire();
-            VistaProductoFire vpFire = new VistaProductoFire();
-            var productosDict = await productoFire.GetAsync();
-            var productosDictVistosUsuario = await vpFire.GetAsync("idUsuario", _usuario.Id);
-            var listaVistaProducto = new List<VistaProducto>();
-            List<Producto> productosDesordenados = new List<Producto>();
-            Dictionary<string, float> dictRelevancia;
-            Producto nuevoProducto;
             ProductoUC nuevoProductoUC;
 
-            foreach (var productoDict in productosDict)
-            {
-                nuevoProducto = new Producto(productoDict);
-                productosDesordenados.Add(nuevoProducto);
-            }
+            await _productos.CargarFireAsync();
+            await Ordenador.OrdenarPorRelevancia(_productos, _usuario.Id);
 
-            foreach (var productoDictVP in productosDictVistosUsuario)
-            {
-                listaVistaProducto.Add(new VistaProducto(productoDictVP));
-            }
-
-            dictRelevancia = VistaProducto.CalcularRelevancia(listaVistaProducto);
-            Producto.CalcularRelevancia(productosDesordenados, dictRelevancia);
-
-            _productos = productosDesordenados.OrderByDescending(p => p.RelevanciaProducto).ToList();
-
-
-
-            foreach (var producto in _productos)
+            foreach (Producto producto in _productos)
             {
                 nuevoProductoUC = new ProductoUC(producto, _usuario.Id, this);
                 containerProductos.Controls.Add(nuevoProductoUC);
             }
-
         }
 
         private void imgCerrar_Click(object sender, EventArgs e)
@@ -124,7 +101,7 @@ namespace parcialUno
             timerMenu.Start();
         }
 
-        private static FlowLayoutPanel EncontrarFLPadre(object sender)
+        private FlowLayoutPanel EncontrarFLPadre(object sender)
         {
             Control aux = (Control)sender;
 
@@ -155,7 +132,7 @@ namespace parcialUno
 
         private void contenedorVender_Click(object sender, EventArgs e)
         {
-            var formVenta = new FormVenta();
+            var formVenta = new FormVenta(_usuario.Id);
             formVenta.ShowDialog();
             if (formVenta.DialogResult == DialogResult.OK)
             {

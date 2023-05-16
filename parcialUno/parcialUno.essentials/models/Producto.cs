@@ -18,6 +18,7 @@ namespace parcialUno.essentials.models
         private string _imagePath;
         private string _estado;
         private float _relevanciaProducto = 0;
+        private int _idVendedor;
 
         public override int Id { get { return _id; } }
         public string Nombre { get { return _nombre; } }
@@ -25,36 +26,22 @@ namespace parcialUno.essentials.models
         public float Precio { get { return _precio; } }
         public List<string> Etiquetas { get { return _etiquetas; } }
         public string ImagePath { get { return _imagePath; } }
+        public float RelevanciaProducto { get { return _relevanciaProducto; } set { _relevanciaProducto = value; } }
+        public string Estado { get { return _estado; }}
 
-        public float RelevanciaProducto { get { return _relevanciaProducto; } set { _relevanciaProducto = value; } } 
+        public int IdVendedor { get { return _idVendedor; } }
 
-        public static float CalcularPrecio(List<Producto> productos)
-        {
-            float acumuladorPrecio = 0;
-            foreach (Producto producto in productos)
-            {
-                acumuladorPrecio += producto;
-            }
-            return acumuladorPrecio;
-        }
-
-        public static void CalcularRelevancia(List<Producto> productos, Dictionary<string, float> dictRelevancia)
-        {
-            foreach (Producto producto in productos)
-            {
-                producto.RelevanciaProducto = 0;
-                foreach (string etiqueta in producto.Etiquetas)
-                {
-                    if (dictRelevancia.ContainsKey(etiqueta))
-                    {
-                        producto.RelevanciaProducto += dictRelevancia[etiqueta];
-                    }
-                }
-            }
-        }
-
-
-        public Producto(int id, string nombre, string descripcion, float precio, List<string> etiquetas, string imagePath)
+        public Producto
+            (
+                int id,
+                string nombre,
+                string descripcion,
+                float precio,
+                List<string> etiquetas,
+                string imagePath,
+                string estado,
+                int idVendedor
+            )
         {
             _id = id;
             _nombre = nombre;
@@ -62,16 +49,43 @@ namespace parcialUno.essentials.models
             _precio = precio;
             _etiquetas = etiquetas;
             _imagePath = imagePath;
+            _estado = estado;
+            _idVendedor = idVendedor;
         }
+
+
+        public Producto
+            (
+                int id,
+                string nombre,
+                string descripcion,
+                float precio,
+                List<string> etiquetas,
+                string imagePath,
+                int idVendedor
+            ) : 
+            this
+            (
+                id,
+                nombre,
+                descripcion,
+                precio, etiquetas,
+                imagePath ,
+                "revision",
+                idVendedor
+            )
+        {}
 
         public Producto(Dictionary<string, object> pDict) :
             this(
-                (int)(long)pDict["id"],
-                (string)pDict["nombre"],
-                (string)pDict["descripcion"],
-                (float)(double)pDict["precio"],
-                Parser.ToStringList((List<object>)pDict["etiquetas"]),
-                (string)pDict["imagePath"]
+                    (int)(long)pDict["id"],
+                    (string)pDict["nombre"],
+                    (string)pDict["descripcion"],
+                    (float)(double)pDict["precio"],
+                    Parser.ToStringList((List<object>)pDict["etiquetas"]),
+                    (string)pDict["imagePath"],
+                    (string)pDict["estado"],
+                    (int)(long)pDict["idVendedor"]
                 )
         {}
 
@@ -96,7 +110,9 @@ namespace parcialUno.essentials.models
                 {"descripcion", Descripcion },
                 {"precio", Precio },
                 {"etiquetas", Etiquetas },
-                {"imagePath",  ImagePath}
+                {"imagePath",  ImagePath},
+                {"estado", Estado },
+                {"idVendedor", IdVendedor }
             };
 
             return productoDict;

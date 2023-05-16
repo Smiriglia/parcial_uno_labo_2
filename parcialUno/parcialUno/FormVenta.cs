@@ -16,8 +16,10 @@ namespace parcialUno
     public partial class FormVenta : Form
     {
         private string _pathImage = "";
-        public FormVenta()
+        private int _idUsuario;
+        public FormVenta(int idUsuario)
         {
+            _idUsuario = idUsuario;
             InitializeComponent();
         }
 
@@ -71,7 +73,8 @@ namespace parcialUno
                     txtDescripcion.Text.Trim(),
                     precio,
                     etiquetas,
-                    _pathImage
+                    _pathImage,
+                    _idUsuario
                 );
                 //TODO  CAMBIAR ESTADO EN VEZ DE SEPARARLO EN COLECCIONES
                 await productoFire.AddAsync(nuevoProducto);
