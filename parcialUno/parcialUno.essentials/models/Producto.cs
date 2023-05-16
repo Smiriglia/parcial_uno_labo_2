@@ -16,6 +16,7 @@ namespace parcialUno.essentials.models
         private float _precio;
         private List<string> _etiquetas;
         private string _imagePath;
+        private string _estado;
         private float _relevanciaProducto = 0;
 
         public override int Id { get { return _id; } }
@@ -100,6 +101,5 @@ namespace parcialUno.essentials.models
 
             return productoDict;
         }
-
     }
 }

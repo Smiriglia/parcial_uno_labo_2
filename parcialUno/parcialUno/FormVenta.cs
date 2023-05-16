@@ -61,7 +61,8 @@ namespace parcialUno
                 errorEtiquetaVacia ||
                 errotEtiquetaMalFormato))
             {
-                id = await Fire.GetUltimoIdAsync("revisionProductos");
+                ProductoFire productoFire = new ProductoFire();
+                id = await productoFire.GetUltimoIdAsync();
                 id++;
                 nuevoProducto = new Producto
                 (
@@ -72,7 +73,8 @@ namespace parcialUno
                     etiquetas,
                     _pathImage
                 );
-                await Fire.AddAsync("revisionProductos", nuevoProducto);
+                //TODO  CAMBIAR ESTADO EN VEZ DE SEPARARLO EN COLECCIONES
+                await productoFire.AddAsync(nuevoProducto);
                 DialogResult = DialogResult.OK;
             }
             else
@@ -112,18 +114,12 @@ namespace parcialUno
                     errorProvider1.SetError(txtEtiquetas, "No has elegido una imagen para el producto");
                     errorProvider1.SetIconPadding(txtEtiquetas, -20);
                 }
-                else
+                else if (errotEtiquetaMalFormato)
                 {
-                    if (errotEtiquetaMalFormato)
-                    {
-                        errorProvider1.SetError(txtEtiquetas, "Error, formato incorrecto");
-                        errorProvider1.SetIconPadding(txtEtiquetas, -20);
-                    }
+                    errorProvider1.SetError(txtEtiquetas, "Error, formato incorrecto");
+                    errorProvider1.SetIconPadding(txtEtiquetas, -20);
                 }
-
-
             }
-
         }
     }
 }

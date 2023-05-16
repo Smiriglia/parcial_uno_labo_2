@@ -1,5 +1,6 @@
 using Google.Protobuf.WellKnownTypes;
 using parcialUno.essentials.models;
+using parcialUno.essentials.utilidades;
 using System.Windows.Forms;
 
 namespace parcialUno
@@ -18,29 +19,20 @@ namespace parcialUno
                 btnIngresar.Enabled = false;
                 string username = txtUsuario.Text;
                 string password = txtPassword.Text;
-
-                if (await Fire.ContieneAsync("usuarios", username, "username"))
+                var usuario = await Validador.ValidarUsuario(username, password);
+                if (usuario is null)
                 {
-                    var usuarioDict = await Fire.GetOneAsync("usuarios", "username", username);
-                    if ((string)usuarioDict["password"] == password)
-                    {
-                        Usuario usuarioIngresado = new Usuario(usuarioDict);
-                        FormPrincipal nuevoFormulario = new FormPrincipal(usuarioIngresado);
-                        this.Hide();
-                        nuevoFormulario.ShowDialog();
-                        if (nuevoFormulario.DialogResult == DialogResult.OK)
-                        {
-                            this.Show();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error, Contraseña incorrecta");
-                    }
+                    MessageBox.Show("Error, No has ingresado un usuario valido");
                 }
                 else
                 {
-                    MessageBox.Show("Error, usuario inexistente");
+                    FormPrincipal nuevoFormulario = new FormPrincipal(usuario);
+                    this.Hide();
+                    nuevoFormulario.ShowDialog();
+                    if (nuevoFormulario.DialogResult == DialogResult.OK)
+                    {
+                        this.Show();
+                    }
                 }
                 btnIngresar.Enabled = true;
             }

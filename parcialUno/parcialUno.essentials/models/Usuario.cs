@@ -48,10 +48,9 @@ namespace parcialUno.essentials.models
             this(id, nombre, username, password, sector, 0.0f)
         {}
 
-        public Usuario(int id, string nombre, string username, string password) : this(id, nombre, username, password, "comprador")
-        {
-            
-        }
+        public Usuario(int id, string nombre, string username, string password) :
+            this(id, nombre, username, password, "comprador")
+        {}
 
         public static bool ValidarUsuario(List<Usuario> usuarios, string username, string password)
         {

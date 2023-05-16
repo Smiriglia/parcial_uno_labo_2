@@ -43,3 +43,4 @@ C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.Properties.Resources.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.userControls.ProductoUC.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormVenta.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormCompra.resources

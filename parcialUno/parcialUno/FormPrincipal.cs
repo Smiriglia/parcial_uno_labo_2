@@ -27,7 +27,10 @@ namespace parcialUno
     {
         private Usuario _usuario;
         private List<Producto> _productos = new List<Producto>();
+        private List<Producto> _carrito = new List<Producto>();
         private bool _menuExpand = false;
+
+        public List<Producto> Carrito { get { return _carrito; } }
         public FormPrincipal(Usuario usuario)
         {
             _usuario = usuario;
@@ -44,8 +47,10 @@ namespace parcialUno
 
         private async void FormPrincipal_Load(object sender, EventArgs e)
         {
-            var productosDict = await Fire.GetAsync("productos");
-            var productosDictVistosUsuario = await Fire.GetAsync("vistaProductos", "idUsuario", _usuario.Id);
+            ProductoFire productoFire = new ProductoFire();
+            VistaProductoFire vpFire = new VistaProductoFire();
+            var productosDict = await productoFire.GetAsync();
+            var productosDictVistosUsuario = await vpFire.GetAsync("idUsuario", _usuario.Id);
             var listaVistaProducto = new List<VistaProducto>();
             List<Producto> productosDesordenados = new List<Producto>();
             Dictionary<string, float> dictRelevancia;
@@ -72,7 +77,7 @@ namespace parcialUno
 
             foreach (var producto in _productos)
             {
-                nuevoProductoUC = new ProductoUC(producto, _usuario.Id);
+                nuevoProductoUC = new ProductoUC(producto, _usuario.Id, this);
                 containerProductos.Controls.Add(nuevoProductoUC);
             }
 

@@ -16,10 +16,12 @@ namespace parcialUno.userControls
     {
         private int _idUsuario;
         private Producto _producto;
-        public ProductoUC(Producto producto, int idUsuario)
+        private FormPrincipal _padre;
+        public ProductoUC(Producto producto, int idUsuario, FormPrincipal padre)
         {
             _producto = producto;
             _idUsuario = idUsuario;
+            _padre = padre;
             InitializeComponent();
             labelNombre.Text = producto.Nombre;
             labelPrecio.Text = $"$ {producto.Precio:F2}";
@@ -38,9 +40,10 @@ namespace parcialUno.userControls
 
         private async void ProductoUC_Click(object sender, EventArgs e)
         {
-            int idVistaProducto = await Fire.GetUltimoIdAsync("vistaProductos") + 1;
+            VistaProductoFire vpFire = new VistaProductoFire();
+            int idVistaProducto = await vpFire.GetUltimoIdAsync() + 1;
             VistaProducto nuevaVP = new VistaProducto(idVistaProducto, _idUsuario, _producto);
-            await Fire.AddAsync("vistaProductos", nuevaVP);
+            await vpFire.AddAsync(nuevaVP);
         }
     }
 }

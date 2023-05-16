@@ -12,19 +12,21 @@ using System.Xml.Linq;
 
 namespace parcialUno.essentials.models
 {
-    public class Fire
+    public abstract class FireBase
     {
-        public async static Task<List<Dictionary<string, object>>> GetAsync(string coleccion)
+        protected FirestoreDb _db;
+        protected CollectionReference _colRef;
+        public FireBase(string coleccion) 
         {
             string projectId = "parcialuno-b8508";
-            FirestoreDb db = FirestoreDb.Create(projectId);
-            List<Dictionary<string, object>> documentosDict = new List<Dictionary<string, object>>();
-
-            var colref = db.Collection(coleccion);
-
-            QuerySnapshot snapshot = await colref.GetSnapshotAsync();
-
+            _db = FirestoreDb.Create(projectId);
+            _colRef = _db.Collection(coleccion);
+        }
+        public async Task<List<Dictionary<string, object>>> GetAsync()
+        {
+            QuerySnapshot snapshot = await _colRef.GetSnapshotAsync();
             var docs = snapshot.Documents;
+            List<Dictionary<string, object>> documentosDict = new List<Dictionary<string, object>>();
 
             foreach (var doc in docs)
             {
@@ -33,15 +35,12 @@ namespace parcialUno.essentials.models
 
             return documentosDict;
         }
-        public async static Task<List<Dictionary<string, object>>> GetAsync(string coleccion, string clave, object valor)
+
+        public async Task<List<Dictionary<string, object>>> GetAsync(string clave, object valor)
         {
-            string projectId = "parcialuno-b8508";
-            FirestoreDb db = FirestoreDb.Create(projectId);
             List<Dictionary<string, object>> documentosDict = new List<Dictionary<string, object>>();
 
-            var colref = db.Collection(coleccion);
-
-            var query = colref.WhereEqualTo(clave, valor);
+            var query = _colRef.WhereEqualTo(clave, valor);
 
             var resultado = await query.GetSnapshotAsync();
 
@@ -51,18 +50,13 @@ namespace parcialUno.essentials.models
             {
                 documentosDict.Add(doc.ToDictionary());
             }
-
-
             return documentosDict;
         }
-        public static async Task<Dictionary<string, object>>? GetOneAsync(string coleccion, string clave, object valor)
+
+        public async Task<Dictionary<string, object>>? GetOneAsync(string clave, object valor)
         {
-            string projectId = "parcialuno-b8508";
-            FirestoreDb db = FirestoreDb.Create(projectId);
 
-            var colref = db.Collection(coleccion);
-
-            var query = colref.WhereEqualTo(clave, valor);
+            var query = _colRef.WhereEqualTo(clave, valor);
 
             var resultado = await query.GetSnapshotAsync();
 
@@ -73,44 +67,14 @@ namespace parcialUno.essentials.models
 
             return null;
         }
-        public static async Task<bool> AddAsync(string coleccion, Transformable elemento, string clave_validar)
-        {
-            if (await ContieneAsync(coleccion, elemento, clave_validar))
-                return false;
-
-            return await AddAsync(coleccion, elemento);
-        }
-        public static async Task<bool> AddAsync(string coleccion, Transformable elemento)
-        {
-            string projectId = "parcialuno-b8508";
-            FirestoreDb db = FirestoreDb.Create(projectId);
-
-            if (await ContieneAsync(coleccion, elemento, "id"))
-                return false;
-
-            //var rta = await colref.AddAsync(usuarioDict);
-            string id = elemento.Id.ToString();
-            DocumentReference docRef = db.Collection(coleccion).Document(id);
-            await docRef.SetAsync(elemento.ToDict());
-            
-            return true;
-
-        }
-
-        public static async Task<bool> ContieneAsync(string coleccion, Transformable elemento, string clave )
+        public async Task<bool> ContieneAsync(Transformable elemento, string clave)
         {
             var elementoDict = elemento.ToDict();
-            return await ContieneAsync(coleccion, elementoDict[clave], clave);
+            return await ContieneAsync(elementoDict[clave], clave);
         }
-
-        public static async Task<bool> ContieneAsync(string coleccion, object elemento, string clave)
+        public  async Task<bool> ContieneAsync(object elemento, string clave)
         {
-            string projectId = "parcialuno-b8508";
-            FirestoreDb db = FirestoreDb.Create(projectId);
-
-            var colref = db.Collection(coleccion);
-
-            var query = colref.WhereEqualTo(clave, elemento);
+            var query = _colRef.WhereEqualTo(clave, elemento);
 
             var resultado = await query.GetSnapshotAsync();
 
@@ -122,16 +86,32 @@ namespace parcialUno.essentials.models
             return false;
         }
 
-        public static async Task<int> GetUltimoIdAsync(string coleccion)
+        public async Task<bool> AddAsync(Transformable elemento, string clave_validar)
+        {
+            if (await ContieneAsync(elemento, clave_validar))
+                return false;
+
+            return await AddAsync(elemento);
+        }
+
+        public async Task<bool> AddAsync(Transformable elemento)
+        {
+            if (await ContieneAsync(elemento, "id"))
+                return false;
+
+            string id = elemento.Id.ToString();
+            DocumentReference docRef = _colRef.Document(id);
+            await docRef.SetAsync(elemento.ToDict());
+
+            return true;
+
+        }
+
+        public async Task<int> GetUltimoIdAsync()
         {
             int ultimoId = 0;
 
-            string projectId = "parcialuno-b8508";
-            FirestoreDb db = FirestoreDb.Create(projectId);
-
-            var colref = db.Collection(coleccion);
-
-            var query = colref.OrderByDescending("id").Limit(1);
+            var query = _colRef.OrderByDescending("id").Limit(1);
 
             var resultado = await query.GetSnapshotAsync();
 
@@ -145,6 +125,17 @@ namespace parcialUno.essentials.models
             return ultimoId;
 
         }
-
-}
+    }
+    public class ProductoFire : FireBase
+    {
+        public ProductoFire() : base("productos") {}
+    }
+    public class UsuarioFire : FireBase
+    {
+        public UsuarioFire() : base("usuarios") { }
+    }
+    public class VistaProductoFire : FireBase
+    {
+        public VistaProductoFire() : base("vistaProductos") { }
+    }
 }
