@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    public class Producto : Transformable
+    public class Producto : ITransformable
     {
         private int _id;
         private string _nombre;
@@ -20,7 +20,7 @@ namespace parcialUno.essentials.models
         private float _relevanciaProducto = 0;
         private int _idVendedor;
 
-        public override int Id { get { return _id; } }
+        public int Id { get { return _id; } }
         public string Nombre { get { return _nombre; } }
         public string Descripcion { get { return _descripcion; } }
         public float Precio { get { return _precio; } }
@@ -101,7 +101,7 @@ namespace parcialUno.essentials.models
 
 
 
-        public override Dictionary<string, object> ToDict()
+        public Dictionary<string, object> ToDict()
         {
             Dictionary<string, object> productoDict = new()
             {

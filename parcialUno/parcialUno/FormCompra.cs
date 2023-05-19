@@ -1,4 +1,5 @@
-﻿using System;
+﻿using parcialUno.essentials.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,24 @@ namespace parcialUno
 {
     public partial class FormCompra : Form
     {
-        public FormCompra()
+        public FormCompra(Producto producto)
         {
+
             InitializeComponent();
+            labelDescripcion.Text = producto.Descripcion;
+            labelNombre.Text = producto.Nombre;
+            labelPrecio.Text = $"$ {producto.Precio:F2}";
+            imgProducto.Image = Image.FromFile(producto.ImagePath);
+        }
+
+        private void imgCerrar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

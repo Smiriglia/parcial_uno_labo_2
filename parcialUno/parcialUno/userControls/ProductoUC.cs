@@ -16,16 +16,16 @@ namespace parcialUno.userControls
     {
         private int _idUsuario;
         private Producto _producto;
-        private FormPrincipal _padre;
-        public ProductoUC(Producto producto, int idUsuario, FormPrincipal padre)
+        private ListaProductos _carrito;
+        public ProductoUC(Producto producto, int idUsuario, ListaProductos carrito)
         {
             _producto = producto;
             _idUsuario = idUsuario;
-            _padre = padre;
+            _carrito = carrito;
             InitializeComponent();
             labelNombre.Text = producto.Nombre;
             labelPrecio.Text = $"$ {producto.Precio:F2}";
-            imgProducto.Image = Image.FromFile(_producto.ImagePath);
+            imgProducto.Image = Image.FromFile(producto.ImagePath);
         }
 
         private void ProductoUC_MouseEnter(object sender, EventArgs e)
@@ -44,6 +44,13 @@ namespace parcialUno.userControls
             int idVistaProducto = await vpFire.GetUltimoIdAsync() + 1;
             VistaProducto nuevaVP = new VistaProducto(idVistaProducto, _idUsuario, _producto);
             await vpFire.AddAsync(nuevaVP);
+
+            FormCompra frmCompra = new FormCompra(_producto);
+            frmCompra.ShowDialog();
+            if (frmCompra.DialogResult == DialogResult.OK)
+            {
+                _carrito.AddProducto(_producto);
+            }
         }
     }
 }

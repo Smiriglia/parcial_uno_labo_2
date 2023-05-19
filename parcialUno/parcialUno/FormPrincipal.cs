@@ -39,9 +39,18 @@ namespace parcialUno
             contenedorMenu.Width = contenedorMenu.MinimumSize.Width;
             labelNombre.Text = _usuario.Nombre;
             labelDinero.Text = $"$ {_usuario.Dinero:F2}";
+
             if (usuario.Sector != "comprador")
             {
-                //TODO ADMIN MENU
+                contenedorAdmin.Enabled = true;
+                contenedorAdmin.Visible = true;
+
+            }
+            else
+            {
+
+                contenedorAdmin.Enabled = false;
+                contenedorAdmin.Visible = false;
             }
 
         }
@@ -55,7 +64,7 @@ namespace parcialUno
 
             foreach (Producto producto in _productos)
             {
-                nuevoProductoUC = new ProductoUC(producto, _usuario.Id, this);
+                nuevoProductoUC = new ProductoUC(producto, _usuario.Id, _carrito);
                 containerProductos.Controls.Add(nuevoProductoUC);
             }
         }
@@ -125,7 +134,7 @@ namespace parcialUno
         private void contenedorVender_MouseLeave(object sender, EventArgs e)
         {
             FlowLayoutPanel senderCasteado = EncontrarFLPadre(sender);
-            contenedorMenu_MouseEnter(sender, e);
+            contenedorMenu_MouseLeave(sender, e);
             senderCasteado.ForeColor = System.Drawing.Color.Black;
             senderCasteado.BackColor = System.Drawing.Color.Transparent;
         }
@@ -143,6 +152,21 @@ namespace parcialUno
         private void contenedorSalir_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void contenedorCarrito_Click(object sender, EventArgs e)
+        {
+            FormCarrito frmCarrito = new FormCarrito(_carrito, _usuario);
+            frmCarrito.ShowDialog();
+            if (frmCarrito.DialogResult == DialogResult.OK)
+            {
+                labelDinero.Text = $"$ {_usuario.Dinero:F2}";
+            }
+        }
+
+        private void containerProductos_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

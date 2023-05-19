@@ -63,6 +63,26 @@ namespace parcialUno.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap basura_abierta {
+            get {
+                object obj = ResourceManager.GetObject("basura_abierta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap basura_cerrada {
+            get {
+                object obj = ResourceManager.GetObject("basura_cerrada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mostrar_contrasenia {
             get {
                 object obj = ResourceManager.GetObject("mostrar_contrasenia", resourceCulture);

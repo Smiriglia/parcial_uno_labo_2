@@ -6,7 +6,6 @@ C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug\net6.0-windows\parcialUno.essentials.dll
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\bin\Debug\net6.0-windows\parcialUno.essentials.pdb
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.csproj.AssemblyReference.cache
-C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.Form1.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.csproj.GenerateResource.cache
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.AssemblyInfoInputs.cache
@@ -44,3 +43,7 @@ C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.userControls.ProductoUC.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormVenta.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormCompra.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormCarrito.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.userControls.ProductoCarritoUC.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormRegistrarse.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormLogin.resources

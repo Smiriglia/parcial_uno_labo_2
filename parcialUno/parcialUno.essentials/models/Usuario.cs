@@ -1,4 +1,6 @@
 ﻿using parcialUno.essentials.abstractas;
+using parcialUno.essentials.excepciones;
+using parcialUno.essentials.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    public class Usuario : Transformable
+    public class Usuario : ITransformable
     {
         private int _id;
         private string _nombre;
@@ -17,7 +19,7 @@ namespace parcialUno.essentials.models
         private string _sector;
 
 
-        public override int Id { get { return _id; } }
+        public int Id { get { return _id; } }
         public string Username { get { return _username; } }
         public string Password { get { return _password; } }
         public float Dinero { get { return _dinero; } }
@@ -52,6 +54,19 @@ namespace parcialUno.essentials.models
             this(id, nombre, username, password, "comprador")
         {}
 
+        public async Task ComprarAsync(ListaProductos carrito)
+        {
+            float total = carrito.CalcularPrecio();
+            if (_dinero < total)
+                throw new SaldoInsuficienteException("Error, No posee saldo suficiente para realizar esta compra");
+            else if (carrito.IsEmpty())
+                throw new CarritoVacioException("Error, No tienes productos para comprar");
+            UsuarioFire usuarioFire = new UsuarioFire();
+            _dinero -= total;
+
+            await usuarioFire.Update(this);
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -62,7 +77,7 @@ namespace parcialUno.essentials.models
             return sb.ToString();
         }
 
-        public override Dictionary<string, object> ToDict()
+        public Dictionary<string, object> ToDict()
         {
             Dictionary<string, object> usuarioDict = new()
             {

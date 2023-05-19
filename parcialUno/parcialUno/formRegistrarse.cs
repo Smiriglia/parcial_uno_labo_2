@@ -5,36 +5,45 @@ using System.Windows.Forms;
 
 namespace parcialUno
 {
-    public partial class Form1 : Form
+    public partial class FormRegistrarse : Form
     {
-        public Form1()
+        public FormRegistrarse()
         {
             InitializeComponent();
         }
 
-        private async void btnIngresar_Click(object sender, EventArgs e)
+        private async void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (btnIngresar.Enabled)
+            if (btnRegistrar.Enabled)
             {
-                btnIngresar.Enabled = false;
+                btnRegistrar.Enabled = false;
                 string username = txtUsuario.Text;
+                string nombre = txtNombre.Text;
                 string password = txtPassword.Text;
-                var usuario = await Validador.ValidarUsuario(username, password);
-                if (usuario is null)
+                string password2 = txtPassword2.Text;
+
+
+                try
                 {
-                    MessageBox.Show("Error, No has ingresado un usuario valido");
+                    await Validador.ValidadarNuevoUsuarioAsync
+                    (
+                        username,
+                        nombre,
+                        password,
+                        password2
+                    );
+                    MessageBox.Show("Usuario Creado Exitosamente");
+                    DialogResult = DialogResult.OK;
                 }
-                else
+                catch (Grpc.Core.RpcException ex)
                 {
-                    FormPrincipal nuevoFormulario = new FormPrincipal(usuario);
-                    this.Hide();
-                    nuevoFormulario.ShowDialog();
-                    if (nuevoFormulario.DialogResult == DialogResult.OK)
-                    {
-                        this.Show();
-                    }
+                    MessageBox.Show("Error, no se pudo establecer conexion con el servidor");
                 }
-                btnIngresar.Enabled = true;
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                btnRegistrar.Enabled = true;
             }
         }
 
@@ -44,11 +53,13 @@ namespace parcialUno
             {
                 btnOcultar.BackgroundImage = Properties.Resources.mostrar_contrasenia;
                 txtPassword.PasswordChar = '•';
+                txtPassword2.PasswordChar = '•';
             }
             else
             {
                 btnOcultar.BackgroundImage = Properties.Resources.ocultar_contrasenia;
                 txtPassword.PasswordChar = (char)0;
+                txtPassword2.PasswordChar = (char)0;
             }
         }
 
@@ -61,7 +72,7 @@ namespace parcialUno
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                btnIngresar_Click(sender, e);
+                btnRegistrar_Click(sender, e);
                 e.Handled = true;
             }
         }
@@ -70,7 +81,7 @@ namespace parcialUno
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                btnIngresar_Click(sender, e);
+                btnRegistrar_Click(sender, e);
                 e.Handled = true;
             }
         }
@@ -79,6 +90,11 @@ namespace parcialUno
         {
             txtUsuario.Clear();
             txtPassword.Clear();
+        }
+
+        private void labelLoguearse_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

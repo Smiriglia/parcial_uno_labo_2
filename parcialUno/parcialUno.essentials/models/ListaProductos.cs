@@ -66,6 +66,14 @@ namespace parcialUno.essentials.models
         {
             _productos.Add(producto);
         }
+        public void RemoveProducto(Producto producto)
+        {
+            _productos.Remove(producto);
+        }
+        public bool IsEmpty()
+        {
+            return _productos.Count == 0;
+        }
         public IEnumerator GetEnumerator()
         {
             return new EnumeradorProducto(_productos);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
-    public class VistaProducto : Transformable
+    public class VistaProducto : ITransformable
     {
         private int _id;
         private int _idUsuario;
@@ -17,7 +17,7 @@ namespace parcialUno.essentials.models
         private List<string> _etiquetas;
         private DateTime _fecha;
 
-        public override int Id { get { return _id; } }
+        public int Id { get { return _id; } }
         public int IdUsuario { get { return _idUsuario; } }
         public int IdProducto { get { return _idProducto; } }
         public List<string> Etiquetas { get { return _etiquetas; } }
@@ -73,7 +73,7 @@ namespace parcialUno.essentials.models
                 Parser.ToDateTime((string)vpDict["fecha"])
                 ) {}
 
-        public override Dictionary<string, object> ToDict()
+        public Dictionary<string, object> ToDict()
         {
             Dictionary<string, object> vistaProductoDict = new()
             {
