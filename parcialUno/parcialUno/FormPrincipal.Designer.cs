@@ -87,7 +87,6 @@
             containerProductos.Name = "containerProductos";
             containerProductos.Size = new Size(528, 450);
             containerProductos.TabIndex = 0;
-            containerProductos.Paint += containerProductos_Paint;
             // 
             // imgCerrar
             // 
@@ -274,7 +273,7 @@
             contenedorAdmin.Name = "contenedorAdmin";
             contenedorAdmin.Size = new Size(199, 55);
             contenedorAdmin.TabIndex = 0;
-            contenedorAdmin.Click += contenedorVender_Click;
+            contenedorAdmin.Click += contenedorAdmin_Click;
             contenedorAdmin.MouseEnter += contenedorVender_MouseEnter;
             contenedorAdmin.MouseLeave += contenedorVender_MouseLeave;
             // 
@@ -290,7 +289,7 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 12;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += contenedorVender_Click;
+            pictureBox3.Click += contenedorAdmin_Click;
             pictureBox3.MouseEnter += contenedorVender_MouseEnter;
             pictureBox3.MouseLeave += contenedorVender_MouseLeave;
             // 
@@ -306,7 +305,7 @@
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 70.8333359F));
             tableLayoutPanel5.Size = new Size(110, 48);
             tableLayoutPanel5.TabIndex = 13;
-            tableLayoutPanel5.Click += contenedorVender_Click;
+            tableLayoutPanel5.Click += contenedorAdmin_Click;
             tableLayoutPanel5.MouseEnter += contenedorVender_MouseEnter;
             tableLayoutPanel5.MouseLeave += contenedorVender_MouseLeave;
             // 
@@ -319,7 +318,7 @@
             label2.Size = new Size(91, 18);
             label2.TabIndex = 13;
             label2.Text = "Admin Menu";
-            label2.Click += contenedorVender_Click;
+            label2.Click += contenedorAdmin_Click;
             label2.MouseEnter += contenedorVender_MouseEnter;
             label2.MouseLeave += contenedorVender_MouseLeave;
             // 

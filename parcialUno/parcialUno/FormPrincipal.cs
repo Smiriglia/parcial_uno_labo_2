@@ -164,9 +164,14 @@ namespace parcialUno
             }
         }
 
-        private void containerProductos_Paint(object sender, PaintEventArgs e)
+        private void contenedorAdmin_Click(object sender, EventArgs e)
         {
+            FormAdmin frmAdmin = new FormAdmin(_usuario);
+            this.Hide();
+            frmAdmin.ShowDialog();
 
+            if(frmAdmin.DialogResult == DialogResult.OK)
+                this.Show();
         }
     }
 }

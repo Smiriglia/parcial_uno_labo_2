@@ -21,7 +21,10 @@ namespace parcialUno.essentials.utilidades
                 var usuarioDict = await usuarioFire.GetOneAsync("username", username);
                 if ((string)usuarioDict["password"] == password)
                 {
-                    return new Usuario(usuarioDict);
+                    if (usuarioDict["sector"] == "comprador")
+                        return new Usuario(usuarioDict);
+                    else
+                        return new Administrador(usuarioDict);
                 }
             }
             throw new UsuarioInvalidoException("Error, No has ingresado un usuario valido");

@@ -76,7 +76,6 @@ namespace parcialUno
                     _pathImage,
                     _idUsuario
                 );
-                //TODO  CAMBIAR ESTADO EN VEZ DE SEPARARLO EN COLECCIONES
                 await productoFire.AddAsync(nuevoProducto);
                 DialogResult = DialogResult.OK;
             }

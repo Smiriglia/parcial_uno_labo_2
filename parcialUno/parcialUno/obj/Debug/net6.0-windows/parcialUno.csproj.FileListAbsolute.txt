@@ -47,3 +47,8 @@ C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.userControls.ProductoCarritoUC.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormRegistrarse.resources
 C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormLogin.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormAdmin.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormDashboard.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormUsuarios.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormVentas.resources
+C:\Users\USUARIO\source\repos\parcial_uno_labo_2\parcialUno\parcialUno\obj\Debug\net6.0-windows\parcialUno.FormPublicaciones.resources
