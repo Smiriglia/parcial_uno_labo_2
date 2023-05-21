@@ -52,9 +52,23 @@ namespace parcialUno
             btnComprar.Enabled = false;
             try
             {
-                await _usuario.ComprarAsync(_carrito);
-                MessageBox.Show("La compra se ha realizado correctamente");
-                DialogResult = DialogResult.OK;
+                int codigoSalida = await _usuario.ComprarAsync(_carrito);
+                switch (codigoSalida)
+                {
+                    case 0:
+                        MessageBox.Show("La compra se ha realizado correctamente");
+                        DialogResult = DialogResult.OK;
+                        break;
+                    case 1:
+                        MessageBox.Show("Ha habido un problema con la compra de algunos productos");
+                        DialogResult = DialogResult.OK;
+                        break;
+                    case 2:
+                        MessageBox.Show("Ha habido un problema con la compra");
+                        break;
+
+                }
+                
             }
             catch (SaldoInsuficienteException ex)
             {

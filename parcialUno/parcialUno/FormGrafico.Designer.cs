@@ -1,6 +1,6 @@
 ﻿namespace parcialUno
 {
-    partial class FormDashboard
+    partial class FormGrafico
     {
         /// <summary>
         /// Required designer variable.
@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
-            // label1
+            // label2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(-20, -21);
-            label1.Name = "label1";
-            label1.Size = new Size(347, 86);
-            label1.TabIndex = 0;
-            label1.Text = "Dashboard";
+            label2.AutoSize = true;
+            label2.Font = new Font("Bahnschrift", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(227, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(228, 29);
+            label2.TabIndex = 0;
+            label2.Text = "Ventas por producto";
             // 
-            // FormDashboard
+            // FormGrafico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(707, 377);
-            Controls.Add(label1);
+            Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormDashboard";
+            Name = "FormGrafico";
             Text = "FormDashboard";
+            Load += FormGrafico_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -58,5 +59,6 @@
         #endregion
 
         private Label label1;
+        private Label label2;
     }
 }

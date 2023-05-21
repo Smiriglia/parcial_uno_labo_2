@@ -203,7 +203,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="imgDashboard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="imgGrafico.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAf7tJREFUeF7t
         vV3IfV+/1uWzn99v7/9P9+MjqTvcmm7bhIVsMYQgOkhCpTfBKKKoQJCoqINejlKwg6KgF4mMwF5OLDoI
@@ -1087,7 +1087,7 @@
   <data name="imgVentas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAN6RJREFUeF7t3QnYbfXc//EmDSo0IBKZQopMEZXxMWRMpgwZMmV4EDLPY5LM06My
+        vQAADr0BR/uQrQAAN6RJREFUeF7t3QnYbfXc//EmDSo0IBKZQopMEZXxMWRMpgwZMmV4EDLPY5LM06My
         j8lQhsiQscwiIpGhooQ0F9f///7EIfl2zn3ue621f3ut9/u6XtdzPTnn7LXve++1117rt36/VczMzMzM
         zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMbDati1viwXge3vzP
         /5v/P/89/7uZmZmNpO1xAM7A/1uOv+IdyMGAmZmZzWn54D8G1Yf9ivwQ28LMzMzmpHXwWvwd1Yf7Ql2A

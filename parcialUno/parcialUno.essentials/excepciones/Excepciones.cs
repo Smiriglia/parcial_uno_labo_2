@@ -35,4 +35,10 @@ namespace parcialUno.essentials.excepciones
         public UsuarioTomadoException() : base() { }
         public UsuarioTomadoException(string message) : base(message) { }
     }
+
+    public class ElementoNoEncontradoExeption : Exception
+    {
+        public ElementoNoEncontradoExeption() : base() { }
+        public ElementoNoEncontradoExeption(string message) : base(message) { }
+    }
 }

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             imgCerrar = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            imgDashboard = new PictureBox();
+            imgGrafico = new PictureBox();
             imgUsuarios = new PictureBox();
             imgVentas = new PictureBox();
             imgPublicaciones = new PictureBox();
@@ -39,7 +39,7 @@
             contenedorPrincipal = new Panel();
             ((System.ComponentModel.ISupportInitialize)imgCerrar).BeginInit();
             flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)imgDashboard).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgGrafico).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgVentas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgPublicaciones).BeginInit();
@@ -63,7 +63,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackColor = Color.Transparent;
-            flowLayoutPanel1.Controls.Add(imgDashboard);
+            flowLayoutPanel1.Controls.Add(imgGrafico);
             flowLayoutPanel1.Controls.Add(imgUsuarios);
             flowLayoutPanel1.Controls.Add(imgVentas);
             flowLayoutPanel1.Controls.Add(imgPublicaciones);
@@ -74,21 +74,21 @@
             flowLayoutPanel1.Size = new Size(64, 209);
             flowLayoutPanel1.TabIndex = 11;
             // 
-            // imgDashboard
+            // imgGrafico
             // 
-            imgDashboard.BackColor = Color.Gray;
-            imgDashboard.Cursor = Cursors.Hand;
-            imgDashboard.Image = (Image)resources.GetObject("imgDashboard.Image");
-            imgDashboard.Location = new Point(0, 0);
-            imgDashboard.Margin = new Padding(0);
-            imgDashboard.Name = "imgDashboard";
-            imgDashboard.Size = new Size(64, 50);
-            imgDashboard.SizeMode = PictureBoxSizeMode.Zoom;
-            imgDashboard.TabIndex = 0;
-            imgDashboard.TabStop = false;
-            imgDashboard.Click += imgDashboard_Click;
-            imgDashboard.MouseEnter += imgDashboard_MouseEnter;
-            imgDashboard.MouseLeave += imgDashboard_MouseLeave;
+            imgGrafico.BackColor = Color.Gray;
+            imgGrafico.Cursor = Cursors.Hand;
+            imgGrafico.Image = (Image)resources.GetObject("imgGrafico.Image");
+            imgGrafico.Location = new Point(0, 0);
+            imgGrafico.Margin = new Padding(0);
+            imgGrafico.Name = "imgGrafico";
+            imgGrafico.Size = new Size(64, 50);
+            imgGrafico.SizeMode = PictureBoxSizeMode.Zoom;
+            imgGrafico.TabIndex = 0;
+            imgGrafico.TabStop = false;
+            imgGrafico.Click += imgGrafico_Click;
+            imgGrafico.MouseEnter += imgDashboard_MouseEnter;
+            imgGrafico.MouseLeave += imgDashboard_MouseLeave;
             // 
             // imgUsuarios
             // 
@@ -171,7 +171,7 @@
             Text = "FormAdmin";
             ((System.ComponentModel.ISupportInitialize)imgCerrar).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)imgDashboard).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgGrafico).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgVentas).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgPublicaciones).EndInit();
@@ -183,7 +183,7 @@
 
         private PictureBox imgCerrar;
         private FlowLayoutPanel flowLayoutPanel1;
-        private PictureBox imgDashboard;
+        private PictureBox imgGrafico;
         private PictureBox pictureBox1;
         private Panel contenedorPrincipal;
         private PictureBox imgUsuarios;

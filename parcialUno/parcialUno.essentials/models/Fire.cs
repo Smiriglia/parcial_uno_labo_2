@@ -10,6 +10,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.ComponentModel;
+using parcialUno.essentials.excepciones;
 
 namespace parcialUno.essentials.models
 {
@@ -53,7 +55,7 @@ namespace parcialUno.essentials.models
             return documentosDict;
         }
 
-        public async Task<Dictionary<string, object>>? GetOneAsync(string clave, object valor)
+        public async Task<Dictionary<string, object>> GetOneAsync(string clave, object valor)
         {
 
             var query = _colRef.WhereEqualTo(clave, valor);
@@ -65,7 +67,7 @@ namespace parcialUno.essentials.models
             if (docs.Count > 0)
                 return docs[0].ToDictionary();
 
-            return null;
+            throw new ElementoNoEncontradoExeption();
         }
         public async Task<bool> ContieneAsync(ITransformable elemento, string clave)
         {
@@ -111,10 +113,14 @@ namespace parcialUno.essentials.models
         {
             await ModAsync(elemento, elemento.ToDict());
         }
-
         public async Task ModAsync(ITransformable elemento, Dictionary<string, object> modificacion)
         {
-            var docRef = _colRef.Document(elemento.Id.ToString());
+            await ModAsync(elemento.Id, modificacion);
+        }
+
+        public async Task ModAsync(int id, Dictionary<string, object> modificacion)
+        {
+            var docRef = _colRef.Document(id.ToString());
             var a = await docRef.UpdateAsync(modificacion);
         }
 
@@ -148,5 +154,10 @@ namespace parcialUno.essentials.models
     public class VistaProductoFire : FireBase
     {
         public VistaProductoFire() : base(Constantes.ColeccionVistaProductos) {}
+    }
+
+    public class VentaFire : FireBase
+    {
+        public VentaFire() : base(Constantes.ColeccionVentas) { }
     }
 }

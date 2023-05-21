@@ -3,6 +3,7 @@ using parcialUno.essentials.excepciones;
 using parcialUno.essentials.Factory;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,16 +55,43 @@ namespace parcialUno.essentials.models
             this(id, nombre, username, password, "comprador")
         {}
 
-        public async Task ComprarAsync(ListaProductos carrito)
+        public async Task<int> ComprarAsync(ListaProductos carrito)
         {
             float total = carrito.CalcularPrecio();
+            int codigoSalida;
             if (_dinero < total)
                 throw new SaldoInsuficienteException("Error, No posee saldo suficiente para realizar esta compra");
             else if (carrito.IsEmpty())
                 throw new CarritoVacioException("Error, No tienes productos para comprar");
             UsuarioFire usuarioFire = new UsuarioFire();
-            _dinero -= total;
+            ListaVentas listaVentas = new ListaVentas();
+            
+            if (await listaVentas.RegistarVentasAsync(Id, carrito))
+            {
+                _dinero -= total;
+                codigoSalida = 0;
 
+            }
+            else if (listaVentas.Count() > 0)
+            {
+                _dinero -= listaVentas.CalcularTotal();
+                codigoSalida = 1;
+            }
+            else
+            {
+                codigoSalida = 2;
+            }
+            //TODO Arreglar falla en la seguridad
+            await usuarioFire.Update(this);
+            return codigoSalida;
+        }
+        public void AñadirDinero(float cantidad)
+        {
+            _dinero += cantidad;
+        }
+        public async Task UpdateAsync()
+        {
+            UsuarioFire usuarioFire = new UsuarioFire();
             await usuarioFire.Update(this);
         }
 

@@ -17,5 +17,19 @@ namespace parcialUno.essentials.Factory
 
             return nuevoUsuario;
         }
+        public static async Task<Usuario> CrearUsuario
+            (string username, string nombre, string password, string sector, float dinero)
+        {
+            UsuarioFire usuarioFire = new UsuarioFire();
+            int id = await usuarioFire.GetUltimoIdAsync() + 1;
+            Usuario nuevoUsuario = new Usuario(id, nombre, username, password, sector, dinero);
+            return nuevoUsuario;
+        }
+        public static async Task<Usuario> getUsuarioAsync(int id)
+        {
+            UsuarioFire usuarioFire = new UsuarioFire();
+            var usuarioDict = await usuarioFire.GetOneAsync("id", id);
+            return new Usuario(usuarioDict);
+        }
     }
 }

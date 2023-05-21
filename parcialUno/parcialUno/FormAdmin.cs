@@ -1,4 +1,5 @@
 ﻿using parcialUno.essentials.models;
+using parcialUno.essentials.excepciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,8 @@ namespace parcialUno
             InitializeComponent();
             if (_admin.Sector != "comprador")
                 _administrador = (Administrador)_admin;
+            else
+                throw new UsuarioInvalidoException();
         }
 
         private void imgCerrar_Click(object sender, EventArgs e)
@@ -38,10 +41,10 @@ namespace parcialUno
             form.Show();
         }
 
-        private void imgDashboard_Click(object sender, EventArgs e)
+        private void imgGrafico_Click(object sender, EventArgs e)
         {
             cambiarOpcionActual(sender);
-            cargarFormulario(new FormDashboard());
+            cargarFormulario(new FormGrafico());
         }
 
         private Color cambiarColor(object sender, Color color)
@@ -76,7 +79,7 @@ namespace parcialUno
         private void imgUsuarios_Click(object sender, EventArgs e)
         {
             cambiarOpcionActual(sender);
-            cargarFormulario(new FormUsuarios());
+            cargarFormulario(new FormUsuarios(_administrador));
         }
 
         private void imgVentas_Click(object sender, EventArgs e)
