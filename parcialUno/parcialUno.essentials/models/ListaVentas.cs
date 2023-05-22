@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,12 @@ namespace parcialUno.essentials.models
 {
     public class ListaVentas : IEnumerable
     {
-        private List<Venta> _ventas;
+        private BindingList<Venta> _ventas;
+
+        public BindingList<Venta> Ventas { get { return _ventas; } }
         public ListaVentas()
         {
-            _ventas = new List<Venta>();
+            _ventas = new BindingList<Venta>();
         }
 
         public async Task CargarFireAsync()
@@ -64,6 +67,10 @@ namespace parcialUno.essentials.models
         {
             return _ventas.Count;
         }
+        public void Clear()
+        {
+            _ventas.Clear();
+        }
 
         private void AddVenta(Venta venta)
         {
@@ -79,10 +86,10 @@ namespace parcialUno.essentials.models
 
     internal class EnumeradorVenta : IEnumerator
     {
-        private List<Venta> data;
+        private BindingList<Venta> data;
         private int currentIndex;
 
-        public EnumeradorVenta(List<Venta> data)
+        public EnumeradorVenta(BindingList<Venta> data)
         {
             this.data = data;
             currentIndex = -1;

@@ -19,7 +19,7 @@ namespace parcialUno.essentials.models
 
         public Administrador(Dictionary<string, object> adminDict) : base(adminDict) { }
 
-        public async Task ModificarElementoAsync
+        public async Task ModificarUsuarioAsync
             (
             ITransformable? elemento,
             string username,
@@ -48,13 +48,31 @@ namespace parcialUno.essentials.models
             else
                 throw new UsuarioInvalidoException("Error con alguno de los campos modificados");
         }
-        public async Task ModificarElementoAsync(ITransformable? elemento, Dictionary<string, object> modificaciones)
+
+        public async Task ModificarUsuarioAsync(Usuario? usuario, Dictionary<string, object> modificaciones)
         {
             UsuarioFire usuarioFire = new UsuarioFire();
+            await ModificarElementoAsync(usuarioFire, usuario, modificaciones);
+        }
+
+        public async Task ModificarVentaAsync(Venta? venta, Dictionary<string, object> modificaciones)
+        {
+            VentaFire ventaFire = new VentaFire();
+            await ModificarElementoAsync(ventaFire, venta, modificaciones);
+        }
+
+        public async Task ModificarProductoAsync(Producto? producto, Dictionary<string, object> modificaciones)
+        {
+            ProductoFire productoFire = new ProductoFire();
+            await ModificarElementoAsync(productoFire, producto, modificaciones);
+        }
+
+        private async Task ModificarElementoAsync(FireBase conexion,ITransformable? elemento, Dictionary<string, object> modificaciones)
+        {
             if (!(elemento is null))
-                await usuarioFire.ModAsync(elemento, modificaciones);
+                await conexion.ModAsync(elemento, modificaciones);
             else
-                throw new UsuarioInvalidoException("Error, Elemento Inexistente");
+                throw new Exception("Error, Elemento Inexistente");
         }
     }
 }

@@ -39,8 +39,15 @@ namespace parcialUno
 
         private async void FormUsuarios_Load(object sender, EventArgs e)
         {
-            await CargarUsuarios();
-            dgUsuarios.DataSource = _usuarios;
+            try
+            {
+                await CargarUsuarios();
+                dgUsuarios.DataSource = _usuarios;
+            }
+            catch
+            {
+                MessageBox.Show("Error de conexion");
+            }
         }
 
         private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -59,12 +66,10 @@ namespace parcialUno
 
         private async void btnModificar_Click(object sender, EventArgs e)
         {
-            float dinero;
-
             try
             {
 
-                await _administrador.ModificarElementoAsync
+                await _administrador.ModificarUsuarioAsync
                     (
                     _usuarioSeleccionado,
                     txtUsername.Text,
@@ -112,7 +117,7 @@ namespace parcialUno
                 {
                     { "sector", "eliminado"}
                 };
-                await _administrador.ModificarElementoAsync(_usuarioSeleccionado, modificacion);
+                await _administrador.ModificarUsuarioAsync(_usuarioSeleccionado, modificacion);
                 await CargarUsuarios();
             }
             catch (Exception ex)

@@ -82,7 +82,7 @@
             // 
             labelId.AutoSize = true;
             labelId.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelId.Location = new Point(147, 299);
+            labelId.Location = new Point(147, 298);
             labelId.Margin = new Padding(3, 5, 3, 0);
             labelId.Name = "labelId";
             labelId.Size = new Size(17, 19);

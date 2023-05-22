@@ -85,13 +85,13 @@ namespace parcialUno
         private void imgVentas_Click(object sender, EventArgs e)
         {
             cambiarOpcionActual(sender);
-            cargarFormulario(new FormVentas());
+            cargarFormulario(new FormVentas(_administrador));
         }
 
         private void imgPublicaciones_Click(object sender, EventArgs e)
         {
             cambiarOpcionActual(sender);
-            cargarFormulario(new FormPublicaciones());
+            cargarFormulario(new FormPublicaciones(_administrador));
         }
     }
 }
