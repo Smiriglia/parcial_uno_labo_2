@@ -63,16 +63,23 @@ namespace parcialUno
                 errorEtiquetaVacia ||
                 errotEtiquetaMalFormato))
             {
-                
-                await ProductoFactory.CrearProducto
-                (
-                    txtNombre.Text.Trim(),
-                    txtDescripcion.Text.Trim(),
-                    precio,
-                    etiquetas,
-                    _pathImage,
-                    _idUsuario
-                );
+                try
+                {
+
+                    await ProductoFactory.CrearProducto
+                    (
+                        txtNombre.Text.Trim(),
+                        txtDescripcion.Text.Trim(),
+                        precio,
+                        etiquetas,
+                        _pathImage,
+                        _idUsuario
+                    );
+                }
+                catch
+                {
+                    MessageBox.Show("Error de conexion");
+                }
                 DialogResult = DialogResult.OK;
             }
             else

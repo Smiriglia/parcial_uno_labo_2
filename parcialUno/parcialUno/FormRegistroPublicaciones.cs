@@ -33,7 +33,15 @@ namespace parcialUno
 
         private async void FormRegistroPublicaciones_Load(object sender, EventArgs e)
         {
-            await CargarProductos();
+            try
+            {
+
+                await CargarProductos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dgProductos_CellClick(object sender, DataGridViewCellEventArgs e)

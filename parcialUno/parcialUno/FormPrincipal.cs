@@ -57,15 +57,23 @@ namespace parcialUno
 
         private async void FormPrincipal_Load(object sender, EventArgs e)
         {
-            ProductoUC nuevoProductoUC;
-
-            await _productos.CargarPublicadosFireAsync();
-            await Ordenador.OrdenarPorRelevancia(_productos, _usuario.Id);
-
-            foreach (Producto producto in _productos)
+            try
             {
-                nuevoProductoUC = new ProductoUC(producto, _usuario.Id, _carrito);
-                containerProductos.Controls.Add(nuevoProductoUC);
+
+                ProductoUC nuevoProductoUC;
+
+                await _productos.CargarPublicadosFireAsync();
+                await Ordenador.OrdenarPorRelevancia(_productos, _usuario.Id);
+
+                foreach (Producto producto in _productos)
+                {
+                    nuevoProductoUC = new ProductoUC(producto, _usuario.Id, _carrito);
+                    containerProductos.Controls.Add(nuevoProductoUC);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error de conexion");
             }
         }
 

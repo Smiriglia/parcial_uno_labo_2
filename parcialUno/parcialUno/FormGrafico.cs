@@ -14,7 +14,7 @@ namespace parcialUno
 {
     public partial class FormGrafico : Form
     {
-        Chart chartGrafico;
+        Chart? chartGrafico;
         public FormGrafico()
         {
             InitializeComponent();
@@ -56,7 +56,14 @@ namespace parcialUno
 
         private async void FormGrafico_Load(object sender, EventArgs e)
         {
-            await AñadirDatosChart();
+            try
+            {
+                await AñadirDatosChart();
+            }
+            catch
+            {
+                MessageBox.Show("Error al cargar los datos");
+            }
         }
     }
 }
