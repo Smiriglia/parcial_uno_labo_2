@@ -152,9 +152,9 @@
             labelNombreUsuario.Font = new Font("Bahnschrift", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             labelNombreUsuario.Location = new Point(168, 17);
             labelNombreUsuario.Name = "labelNombreUsuario";
-            labelNombreUsuario.Size = new Size(68, 23);
+            labelNombreUsuario.Size = new Size(19, 23);
             labelNombreUsuario.TabIndex = 21;
-            labelNombreUsuario.Text = "Fausto";
+            labelNombreUsuario.Text = "-";
             // 
             // pictureBox1
             // 
@@ -172,9 +172,9 @@
             label2.Font = new Font("Bahnschrift", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(168, 40);
             label2.Name = "label2";
-            label2.Size = new Size(153, 23);
+            label2.Size = new Size(146, 23);
             label2.TabIndex = 21;
-            label2.Text = "Publicaciones: 10";
+            label2.Text = "Publicaciones: -";
             // 
             // btnAceptar
             // 

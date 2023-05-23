@@ -3,6 +3,7 @@ using parcialUno.essentials.models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace parcialUno.essentials.models
         {
             _productos = new List<Producto>();
         }
+
+        public BindingList<Producto> Productos { get { return new BindingList<Producto>(_productos); } }
 
         public float CalcularPrecio()
         {
@@ -42,16 +45,29 @@ namespace parcialUno.essentials.models
                 }
             }
         }
-        public async Task CargarFireAsync()
+
+        private void CargarProductosDict(List<Dictionary<string, object>> productosDict)
         {
-            ProductoFire productoFire = new ProductoFire();
-            var productosDict = await productoFire.GetAsync("estado", "publicado");
             foreach (var productoDict in productosDict)
             {
                 Producto nuevoProducto = new Producto(productoDict);
                 AddProducto(nuevoProducto);
             }
         }
+        public async Task CargarPublicadosFireAsync()
+        {
+            ProductoFire productoFire = new ProductoFire();
+            var productosDict = await productoFire.GetAsync("estado", "publicado");
+            CargarProductosDict(productosDict);
+        }
+
+        public async Task CargarFireAsync()
+        {
+            ProductoFire productoFire = new ProductoFire();
+            var productosDict = await productoFire.GetAsync();
+            CargarProductosDict(productosDict);
+        }
+
 
         public void OrdenarPorRelevancia()
         {
@@ -73,6 +89,10 @@ namespace parcialUno.essentials.models
         public bool IsEmpty()
         {
             return _productos.Count == 0;
+        }
+        public void Clear()
+        {
+            _productos.Clear();
         }
         public IEnumerator GetEnumerator()
         {

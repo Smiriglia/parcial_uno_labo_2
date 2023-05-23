@@ -110,9 +110,9 @@ namespace parcialUno.essentials.models
 
         public async Task<bool> AddFireAsync()
         {
-            VentaFire ventaFire = new VentaFire();
             try
             {
+                VentaFire ventaFire = new VentaFire();
                 Usuario vendedor = await UsuarioFactory.getUsuarioAsync(IdVendedor);
                 vendedor.AñadirDinero(Precio - Ganancia);
                 await vendedor.UpdateAsync();

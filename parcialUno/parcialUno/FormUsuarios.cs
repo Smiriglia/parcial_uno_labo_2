@@ -113,11 +113,7 @@ namespace parcialUno
         {
             try
             {
-                Dictionary<string, object> modificacion = new()
-                {
-                    { "sector", "eliminado"}
-                };
-                await _administrador.ModificarUsuarioAsync(_usuarioSeleccionado, modificacion);
+                await _administrador.EliminarUsuarioAsync(_usuarioSeleccionado);
                 await CargarUsuarios();
             }
             catch (Exception ex)

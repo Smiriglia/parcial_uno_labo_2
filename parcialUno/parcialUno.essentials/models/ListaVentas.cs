@@ -13,7 +13,8 @@ namespace parcialUno.essentials.models
     {
         private BindingList<Venta> _ventas;
 
-        public BindingList<Venta> Ventas { get { return _ventas; } }
+        public BindingList<Venta> Ventas { get { return new BindingList<Venta>(_ventas); } }
+        //retorno una copia de la lista para que no la puedan modificar al ser pasada por referencia
         public ListaVentas()
         {
             _ventas = new BindingList<Venta>();

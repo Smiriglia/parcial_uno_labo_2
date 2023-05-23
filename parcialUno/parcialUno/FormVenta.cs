@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using parcialUno.essentials.Factory;
 using parcialUno.essentials.models;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,6 @@ namespace parcialUno
         {
             float precio;
             List<string> etiquetas;
-            Producto nuevoProducto;
             int id;
             Regex regex = new Regex(@"^[a-zA-Z\-]+,[a-zA-Z\-]+,[a-zA-Z\-]+$");
 
@@ -63,12 +63,9 @@ namespace parcialUno
                 errorEtiquetaVacia ||
                 errotEtiquetaMalFormato))
             {
-                ProductoFire productoFire = new ProductoFire();
-                id = await productoFire.GetUltimoIdAsync();
-                id++;
-                nuevoProducto = new Producto
+                
+                await ProductoFactory.CrearProducto
                 (
-                    id,
                     txtNombre.Text.Trim(),
                     txtDescripcion.Text.Trim(),
                     precio,
@@ -76,7 +73,6 @@ namespace parcialUno
                     _pathImage,
                     _idUsuario
                 );
-                await productoFire.AddAsync(nuevoProducto);
                 DialogResult = DialogResult.OK;
             }
             else

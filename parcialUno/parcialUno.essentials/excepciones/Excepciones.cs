@@ -11,6 +11,11 @@ namespace parcialUno.essentials.excepciones
         public UsuarioInvalidoException() : base() { }
         public UsuarioInvalidoException(string message) : base(message) { }
     }
+    public class ProductoInvalidoException : Exception
+    {
+        public ProductoInvalidoException() : base() { }
+        public ProductoInvalidoException(string message) : base(message) { }
+    }
 
     public class SaldoInsuficienteException : Exception
     {

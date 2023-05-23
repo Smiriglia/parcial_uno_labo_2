@@ -32,7 +32,7 @@ namespace parcialUno
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
-            cargarFormulario(new FormRegistroPublicaciones());
+            cargarFormulario(new FormRegistroPublicaciones(_administrador));
         }
 
         private void btnPendientes_Click(object sender, EventArgs e)

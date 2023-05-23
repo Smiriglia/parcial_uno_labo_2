@@ -58,7 +58,7 @@ namespace parcialUno
             try
             {
 
-                if(_producto != null )
+                if (_producto != null)
                 {
                     Usuario vendedor = await UsuarioFactory.getUsuarioAsync(_producto.IdVendedor);
                     _vendedor = vendedor;

@@ -21,7 +21,7 @@ namespace parcialUno.essentials.models
 
         public async Task ModificarUsuarioAsync
             (
-            ITransformable? elemento,
+            Usuario? usuario,
             string username,
             string password,
             string txtDinero,
@@ -30,7 +30,12 @@ namespace parcialUno.essentials.models
             )
         {
             float dinero;
-            if (!(elemento is null) && float.TryParse(txtDinero, out dinero))
+            UsuarioFire usuarioFire = new UsuarioFire();
+            bool usuarioTomado = await usuarioFire.ContieneAsync(username, "username");
+            if (float.TryParse(txtDinero, out dinero) &&
+                username != "" &&
+                sector != "" &&
+                !usuarioTomado)
             {
                 Dictionary<string, object> modificaciones = new()
                 {
@@ -40,13 +45,20 @@ namespace parcialUno.essentials.models
                     { "nombre", nombre },
                     { "sector", sector }
                 };
-                UsuarioFire usuarioFire = new UsuarioFire();
-
-
-                await usuarioFire.ModAsync(elemento, modificaciones);
+                
+                await ModificarUsuarioAsync(usuario, modificaciones);
             }
             else
                 throw new UsuarioInvalidoException("Error con alguno de los campos modificados");
+        }
+
+        public async Task EliminarUsuarioAsync(Usuario? usuario)
+        {
+            Dictionary<string, object> modificacion = new()
+            {
+                { "sector", "eliminado"}
+            };
+            await ModificarUsuarioAsync(usuario, modificacion);
         }
 
         public async Task ModificarUsuarioAsync(Usuario? usuario, Dictionary<string, object> modificaciones)
@@ -67,6 +79,49 @@ namespace parcialUno.essentials.models
             await ModificarElementoAsync(productoFire, producto, modificaciones);
         }
 
+        public async Task EliminarProductoAsync(Producto? producto)
+        {
+            Dictionary<string, object> modificacion = new()
+            {
+                {"estado", "eliminado" }
+            };
+            await ModificarProductoAsync(producto, modificacion);
+        }
+
+        public async Task ModificarProductoAsync
+            (
+            Producto? elemento,
+            string nombre,
+            string descripcion,
+            string txtPrecio,
+            string imagePath,
+            string estado,
+            string txtIdVendedor
+            )
+        {
+            float precio;
+            int idVendedor;
+            if (!(elemento is null) &&
+                float.TryParse(txtPrecio, out precio) &&
+                int.TryParse(txtIdVendedor, out idVendedor))
+            {
+                Dictionary<string, object> modificaciones = new()
+                {
+                    { "nombre", nombre},
+                    { "descripcion", descripcion },
+                    { "precio", precio },
+                    { "imagePath", imagePath },
+                    { "estado", estado },
+                    { "idVendedor", idVendedor }
+                };
+                ProductoFire productoFire = new ProductoFire();
+
+
+                await productoFire.ModAsync(elemento, modificaciones);
+            }
+            else
+                throw new UsuarioInvalidoException("Error con alguno de los campos modificados");
+        }
         private async Task ModificarElementoAsync(FireBase conexion,ITransformable? elemento, Dictionary<string, object> modificaciones)
         {
             if (!(elemento is null))

@@ -59,7 +59,7 @@ namespace parcialUno
         {
             ProductoUC nuevoProductoUC;
 
-            await _productos.CargarFireAsync();
+            await _productos.CargarPublicadosFireAsync();
             await Ordenador.OrdenarPorRelevancia(_productos, _usuario.Id);
 
             foreach (Producto producto in _productos)

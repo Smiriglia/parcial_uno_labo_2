@@ -27,12 +27,12 @@ namespace parcialUno
         {
             _ventas.Clear();
             await _ventas.CargarFireAsync();
+            dgVentas.DataSource = _ventas.Ventas;
         }
 
         private async void FormVentas_Load(object sender, EventArgs e)
         {
             await CargarVentas();
-            dgVentas.DataSource = _ventas.Ventas;
         }
 
         private void dgVentas_CellClick(object sender, DataGridViewCellEventArgs e)
