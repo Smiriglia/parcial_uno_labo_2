@@ -56,12 +56,9 @@ namespace parcialUno.essentials.models
             )
         {
             float dinero;
-            UsuarioFire usuarioFire = new UsuarioFire();
-            bool usuarioTomado = await usuarioFire.ContieneAsync(username, "username");
             if (float.TryParse(txtDinero, out dinero) &&
                 username != "" &&
-                sector != "" &&
-                !usuarioTomado)
+                sector != "")
             {
                 Dictionary<string, object> modificaciones = new()
                 {
@@ -101,6 +98,19 @@ namespace parcialUno.essentials.models
         public async Task ModificarUsuarioAsync(Usuario? usuario, Dictionary<string, object> modificaciones)
         {
             UsuarioFire usuarioFire = new UsuarioFire();
+            if (usuario != null &&
+                modificaciones.ContainsKey("username") &&
+                await usuarioFire.ContieneAsync(modificaciones["username"], "username"))
+            {
+                var usuarioTomado = await usuarioFire.GetOneAsync("username", modificaciones["username"]);
+                int idUsuarioTomado = (int)(long)usuarioTomado["id"];
+                string usuarioTomadoUserName = (string)usuarioTomado["username"];
+
+                if (usuarioTomadoUserName == (string)modificaciones["username"] && usuario.Id != idUsuarioTomado)
+                {
+                    throw new UsuarioTomadoException("Error, El username ingresado ya esta tomado");
+                }
+            }
             await ModificarElementoAsync(usuarioFire, usuario, modificaciones);
         }
 

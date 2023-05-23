@@ -42,7 +42,6 @@ namespace parcialUno
         {
             float precio;
             List<string> etiquetas;
-            int id;
             Regex regex = new Regex(@"^[a-zA-Z\-]+,[a-zA-Z\-]+,[a-zA-Z\-]+$");
 
             bool errorNombreVacio = txtNombre.Text.Trim() == "";
