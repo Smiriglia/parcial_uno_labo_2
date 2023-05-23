@@ -35,8 +35,8 @@ namespace parcialUno
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show("No hay productos pendientes");
+                MessageBox.Show("No hay productos pendientes",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
 
@@ -67,7 +67,8 @@ namespace parcialUno
             }
             catch
             {
-                MessageBox.Show("Problema de conexion");
+                MessageBox.Show("Problema de conexion",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -95,7 +96,8 @@ namespace parcialUno
             }
             catch
             {
-                MessageBox.Show("Error de conexion");
+                MessageBox.Show("Error de conexion",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -107,7 +109,8 @@ namespace parcialUno
             }
             catch
             {
-                MessageBox.Show("Error de conexion");
+                MessageBox.Show("Error de conexion",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -73,7 +73,8 @@ namespace parcialUno
             }
             catch
             {
-                MessageBox.Show("Error de conexion");
+                MessageBox.Show("Error de conexion",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -153,7 +154,8 @@ namespace parcialUno
             formVenta.ShowDialog();
             if (formVenta.DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("Tu producto fue enviado correctamente y esta en revision");
+                MessageBox.Show("Tu producto fue enviado correctamente y esta en revision", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

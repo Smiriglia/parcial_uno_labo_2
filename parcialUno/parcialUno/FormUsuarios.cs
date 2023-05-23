@@ -46,7 +46,8 @@ namespace parcialUno
             }
             catch
             {
-                MessageBox.Show("Error de conexion");
+                MessageBox.Show("Error de conexion",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -118,7 +119,8 @@ namespace parcialUno
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message
+                    ,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

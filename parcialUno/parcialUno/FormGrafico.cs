@@ -62,7 +62,8 @@ namespace parcialUno
             }
             catch
             {
-                MessageBox.Show("Error al cargar los datos");
+                MessageBox.Show("Error al cargar los datos",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

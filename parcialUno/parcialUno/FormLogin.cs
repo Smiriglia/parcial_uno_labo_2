@@ -43,11 +43,12 @@ namespace parcialUno
                 }
                 catch (Grpc.Core.RpcException ex)
                 {
-                    MessageBox.Show("Error, no se pudo establecer conexion con el servidor");
+                    MessageBox.Show("Error, no se pudo establecer conexion con el servidor",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (UsuarioInvalidoException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 btnIngresar.Enabled = true;
             }

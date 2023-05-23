@@ -56,15 +56,18 @@ namespace parcialUno
                 switch (codigoSalida)
                 {
                     case 0:
-                        MessageBox.Show("La compra se ha realizado correctamente");
+                        MessageBox.Show("La compra se ha realizado correctamente",
+                            "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DialogResult = DialogResult.OK;
                         break;
                     case 1:
-                        MessageBox.Show("Ha habido un problema con la compra de algunos productos");
+                        MessageBox.Show("Ha habido un problema con la compra de algunos productos",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         DialogResult = DialogResult.OK;
                         break;
                     case 2:
-                        MessageBox.Show("Ha habido un problema con la compra");
+                        MessageBox.Show("Ha habido un problema con la compra",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
 
                 }
@@ -72,15 +75,18 @@ namespace parcialUno
             }
             catch (SaldoInsuficienteException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (CarritoVacioException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch
             {
-                MessageBox.Show("Ha ocurrido un error al intentar relizar la compra");
+                MessageBox.Show("Ha ocurrido un error al intentar relizar la compra",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             btnComprar.Enabled = true;
         }

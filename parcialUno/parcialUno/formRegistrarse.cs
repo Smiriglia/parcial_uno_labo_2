@@ -32,12 +32,14 @@ namespace parcialUno
                         password,
                         password2
                     );
-                    MessageBox.Show("Usuario Creado Exitosamente");
+                    MessageBox.Show("Usuario Creado Exitosamente",
+                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                 }
                 catch (Grpc.Core.RpcException ex)
                 {
-                    MessageBox.Show("Error, no se pudo establecer conexion con el servidor");
+                    MessageBox.Show("Error, no se pudo establecer conexion con el servidor",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {

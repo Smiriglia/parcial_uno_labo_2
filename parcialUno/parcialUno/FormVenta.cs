@@ -78,7 +78,8 @@ namespace parcialUno
                 }
                 catch
                 {
-                    MessageBox.Show("Error de conexion");
+                    MessageBox.Show("Error de conexion",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 DialogResult = DialogResult.OK;
             }
