@@ -71,7 +71,7 @@ namespace parcialUno
                         break;
 
                 }
-                
+
             }
             catch (SaldoInsuficienteException ex)
             {

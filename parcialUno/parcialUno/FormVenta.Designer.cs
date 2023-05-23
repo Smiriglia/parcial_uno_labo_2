@@ -68,7 +68,7 @@
             // 
             imgProducto.BorderStyle = BorderStyle.FixedSingle;
             imgProducto.Cursor = Cursors.Hand;
-            imgProducto.Image = (Image)resources.GetObject("imgProducto.Image");
+            imgProducto.Image = Properties.Resources.addProduct;
             imgProducto.Location = new Point(11, 11);
             imgProducto.Name = "imgProducto";
             imgProducto.Size = new Size(100, 96);

@@ -64,7 +64,7 @@
             // imgCarrito
             // 
             imgCarrito.Cursor = Cursors.Hand;
-            imgCarrito.Image = (Image)resources.GetObject("imgCarrito.Image");
+            imgCarrito.Image = Properties.Resources.carrito;
             imgCarrito.Location = new Point(196, 146);
             imgCarrito.Name = "imgCarrito";
             imgCarrito.Size = new Size(40, 35);
@@ -146,7 +146,7 @@
             // imgProducto
             // 
             imgProducto.BorderStyle = BorderStyle.FixedSingle;
-            imgProducto.Image = (Image)resources.GetObject("imgProducto.Image");
+            imgProducto.Image = Properties.Resources.samsungS21;
             imgProducto.Location = new Point(11, 33);
             imgProducto.Name = "imgProducto";
             imgProducto.Size = new Size(179, 150);

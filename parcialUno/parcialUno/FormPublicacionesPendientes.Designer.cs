@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPublicacionesPendientes));
             imgCarrito = new PictureBox();
             btnAgregar = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -53,7 +52,7 @@
             // 
             imgCarrito.BackColor = Color.White;
             imgCarrito.Cursor = Cursors.Hand;
-            imgCarrito.Image = (Image)resources.GetObject("imgCarrito.Image");
+            imgCarrito.Image = Properties.Resources.carrito;
             imgCarrito.Location = new Point(279, 204);
             imgCarrito.Name = "imgCarrito";
             imgCarrito.Size = new Size(40, 35);
@@ -138,7 +137,7 @@
             // 
             imgProducto.BackColor = Color.White;
             imgProducto.BorderStyle = BorderStyle.FixedSingle;
-            imgProducto.Image = (Image)resources.GetObject("imgProducto.Image");
+            imgProducto.Image = Properties.Resources.cruz;
             imgProducto.Location = new Point(94, 91);
             imgProducto.Name = "imgProducto";
             imgProducto.Size = new Size(179, 150);
@@ -158,7 +157,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.user_icon;
             pictureBox1.Location = new Point(94, 9);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(71, 68);

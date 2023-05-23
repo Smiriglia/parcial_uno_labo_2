@@ -180,7 +180,7 @@ namespace parcialUno
             this.Hide();
             frmAdmin.ShowDialog();
 
-            if(frmAdmin.DialogResult == DialogResult.OK)
+            if (frmAdmin.DialogResult == DialogResult.OK)
                 this.Show();
         }
     }

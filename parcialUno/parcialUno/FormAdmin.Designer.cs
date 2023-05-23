@@ -78,7 +78,7 @@
             // 
             imgGrafico.BackColor = Color.Gray;
             imgGrafico.Cursor = Cursors.Hand;
-            imgGrafico.Image = (Image)resources.GetObject("imgGrafico.Image");
+            imgGrafico.Image = Properties.Resources.dashboard_icon;
             imgGrafico.Location = new Point(0, 0);
             imgGrafico.Margin = new Padding(0);
             imgGrafico.Name = "imgGrafico";
@@ -94,7 +94,7 @@
             // 
             imgUsuarios.BackColor = Color.Gray;
             imgUsuarios.Cursor = Cursors.Hand;
-            imgUsuarios.Image = (Image)resources.GetObject("imgUsuarios.Image");
+            imgUsuarios.Image = Properties.Resources.usuarios_icon;
             imgUsuarios.Location = new Point(0, 50);
             imgUsuarios.Margin = new Padding(0);
             imgUsuarios.Name = "imgUsuarios";
@@ -110,7 +110,7 @@
             // 
             imgVentas.BackColor = Color.Gray;
             imgVentas.Cursor = Cursors.Hand;
-            imgVentas.Image = (Image)resources.GetObject("imgVentas.Image");
+            imgVentas.Image = Properties.Resources.ventas_icon;
             imgVentas.Location = new Point(0, 100);
             imgVentas.Margin = new Padding(0);
             imgVentas.Name = "imgVentas";
@@ -126,7 +126,7 @@
             // 
             imgPublicaciones.BackColor = Color.Gray;
             imgPublicaciones.Cursor = Cursors.Hand;
-            imgPublicaciones.Image = (Image)resources.GetObject("imgPublicaciones.Image");
+            imgPublicaciones.Image = Properties.Resources.post_icon;
             imgPublicaciones.Location = new Point(0, 150);
             imgPublicaciones.Margin = new Padding(0);
             imgPublicaciones.Name = "imgPublicaciones";

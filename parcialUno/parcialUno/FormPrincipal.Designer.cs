@@ -159,7 +159,7 @@
             // 
             imgVender.BackColor = Color.Transparent;
             imgVender.BackgroundImageLayout = ImageLayout.None;
-            imgVender.Image = (Image)resources.GetObject("imgVender.Image");
+            imgVender.Image = Properties.Resources.publicar;
             imgVender.Location = new Point(3, 3);
             imgVender.Name = "imgVender";
             imgVender.Size = new Size(71, 48);
@@ -220,7 +220,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Image = Properties.Resources.carrito;
             pictureBox2.Location = new Point(0, 3);
             pictureBox2.Margin = new Padding(0, 3, 3, 3);
             pictureBox2.Name = "pictureBox2";
@@ -281,7 +281,7 @@
             // 
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.BackgroundImageLayout = ImageLayout.None;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Image = Properties.Resources.admin_icon;
             pictureBox3.Location = new Point(8, 3);
             pictureBox3.Margin = new Padding(8, 3, 3, 3);
             pictureBox3.Name = "pictureBox3";
@@ -342,7 +342,7 @@
             // 
             imgSalir.BackColor = Color.Transparent;
             imgSalir.BackgroundImageLayout = ImageLayout.None;
-            imgSalir.Image = (Image)resources.GetObject("imgSalir.Image");
+            imgSalir.Image = Properties.Resources.cerrarSesion;
             imgSalir.Location = new Point(13, 3);
             imgSalir.Margin = new Padding(13, 3, 3, 3);
             imgSalir.Name = "imgSalir";
@@ -408,7 +408,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.user_icon;
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(71, 68);

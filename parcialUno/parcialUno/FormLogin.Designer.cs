@@ -123,7 +123,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Image = Properties.Resources.logo;
             pictureBox2.Location = new Point(-22, -18);
             pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
@@ -134,7 +134,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Image = Properties.Resources.user_icon;
             pictureBox3.Location = new Point(26, 190);
             pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
@@ -154,7 +154,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Image = Properties.Resources.private_lock_icon;
             pictureBox4.Location = new Point(26, 259);
             pictureBox4.Margin = new Padding(4);
             pictureBox4.Name = "pictureBox4";
