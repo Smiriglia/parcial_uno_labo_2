@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
+using parcialUno.essentials.Factory;
 using parcialUno.essentials.models;
 
 namespace parcialUno.userControls
@@ -40,10 +41,10 @@ namespace parcialUno.userControls
 
         private async void ProductoUC_Click(object sender, EventArgs e)
         {
-            VistaProductoFire vpFire = new VistaProductoFire();
-            int idVistaProducto = await vpFire.GetUltimoIdAsync() + 1;
-            VistaProducto nuevaVP = new VistaProducto(idVistaProducto, _idUsuario, _producto);
-            await vpFire.AddAsync(nuevaVP);
+            
+            VistaProducto? nuevaVp = await VistaProductoFactory.Crear(_idUsuario, _producto);
+            if (nuevaVp != null)
+                await nuevaVp.AddFireAsync();
 
             FormCompra frmCompra = new FormCompra(_producto);
             frmCompra.ShowDialog();

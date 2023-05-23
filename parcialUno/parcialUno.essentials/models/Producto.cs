@@ -20,17 +20,66 @@ namespace parcialUno.essentials.models
         private float _relevanciaProducto = 0;
         private int _idVendedor;
 
+        /// <summary>
+        /// ID del producto.
+        /// </summary>
         public int Id { get { return _id; } }
-        public string Nombre { get { return _nombre; } }
-        public string Descripcion { get { return _descripcion; } }
-        public float Precio { get { return _precio; } }
-        public List<string> Etiquetas { get { return _etiquetas; } }
-        public string ImagePath { get { return _imagePath; } }
-        public float RelevanciaProducto { get { return _relevanciaProducto; } set { _relevanciaProducto = value; } }
-        public string Estado { get { return _estado; }}
 
+        /// <summary>
+        /// Nombre del producto.
+        /// </summary>
+        public string Nombre { get { return _nombre; } }
+
+        /// <summary>
+        /// Descripción del producto.
+        /// </summary>
+        public string Descripcion { get { return _descripcion; } }
+
+        /// <summary>
+        /// Precio del producto.
+        /// </summary>
+        public float Precio { get { return _precio; } }
+
+        /// <summary>
+        /// Lista de etiquetas asociadas al producto.
+        /// </summary>
+        public List<string> Etiquetas { get { return _etiquetas; } }
+
+        /// <summary>
+        /// Ruta de la imagen del producto.
+        /// </summary>
+        public string ImagePath { get { return _imagePath; } }
+
+        /// <summary>
+        /// Relevancia del producto.
+        /// </summary>
+        public float RelevanciaProducto 
+        {
+            get { return _relevanciaProducto; } 
+            set { _relevanciaProducto = value; } 
+        }
+
+        /// <summary>
+        /// Estado del producto. (publicado/revision/rechazado/eliminado)
+        /// </summary>
+        public string Estado { get { return _estado; } }
+
+        /// <summary>
+        /// ID del vendedor asociado al producto.
+        /// </summary>
         public int IdVendedor { get { return _idVendedor; } }
 
+        /// <summary>
+        /// Constructor de la clase Producto. Con todos los atributos tomados por parametro
+        /// </summary>
+        /// <param name="id">ID del producto.</param>
+        /// <param name="nombre">Nombre del producto.</param>
+        /// <param name="descripcion">Descripción del producto.</param>
+        /// <param name="precio">Precio del producto.</param>
+        /// <param name="etiquetas">Lista de etiquetas asociadas al producto.</param>
+        /// <param name="imagePath">Ruta de la imagen del producto.</param>
+        /// <param name="estado">Estado del producto.</param>
+        /// <param name="idVendedor">ID del vendedor asociado al producto.</param>
         public Producto
             (
                 int id,
@@ -53,7 +102,16 @@ namespace parcialUno.essentials.models
             _idVendedor = idVendedor;
         }
 
-
+        /// <summary>
+        /// Constructor de la clase Producto que establece el estado como "revision".
+        /// </summary>
+        /// <param name="id">ID del producto.</param>
+        /// <param name="nombre">Nombre del producto.</param>
+        /// <param name="descripcion">Descripción del producto.</param>
+        /// <param name="precio">Precio del producto.</param>
+        /// <param name="etiquetas">Lista de etiquetas asociadas al producto.</param>
+        /// <param name="imagePath">Ruta de la imagen del producto.</param>
+        /// <param name="idVendedor">ID del vendedor asociado al producto.</param>
         public Producto
             (
                 int id,
@@ -76,6 +134,10 @@ namespace parcialUno.essentials.models
             )
         {}
 
+        /// <summary>
+        /// Constructor de la clase Producto a partir de un diccionario.
+        /// </summary>
+        /// <param name="pDict">Diccionario que contiene los datos del producto.</param>
         public Producto(Dictionary<string, object> pDict) :
             this(
                     (int)(long)pDict["id"],
@@ -89,18 +151,33 @@ namespace parcialUno.essentials.models
                 )
         {}
 
+        /// <summary>
+        /// Sobrecarga del operador de suma para sumar un monto de dinero y el precio de un producto.
+        /// </summary>
+        /// <param name="dinero">Monto de dinero.</param>
+        /// <param name="producto">Producto.</param>
+        /// <returns>El resultado de la suma.</returns>
         public static float operator +(float dinero, Producto producto)
         {
             return dinero + producto.Precio;
         }
 
+        /// <summary>
+        /// Sobrecarga del operador de suma para sumar el precio de un producto y un monto de dinero.
+        /// </summary>
+        /// <param name="producto">Producto.</param>
+        /// <param name="dinero">Monto de dinero.</param>
+        /// <returns>El resultado de la suma.</returns>
         public static float operator +(Producto producto, float dinero)
         {
             return dinero + producto;
         }
 
 
-
+        /// <summary>
+        /// Convierte el objeto Producto a un diccionario.
+        /// </summary>
+        /// <returns>Diccionario que representa el objeto Producto.</returns>
         public Dictionary<string, object> ToDict()
         {
             Dictionary<string, object> productoDict = new()

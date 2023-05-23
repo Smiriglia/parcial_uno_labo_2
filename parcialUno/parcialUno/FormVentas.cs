@@ -26,7 +26,7 @@ namespace parcialUno
         private async Task CargarVentas()
         {
             _ventas.Clear();
-            await _ventas.CargarFireAsync();
+            await _ventas.CargarPendientesFireAsync();
             dgVentas.DataSource = _ventas.Ventas;
         }
 

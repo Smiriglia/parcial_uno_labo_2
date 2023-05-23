@@ -7,8 +7,22 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.Factory
 {
+    /// <summary>
+    /// Clase estática que proporciona métodos para crear instancias de la clase Producto.
+    /// </summary>
     public static class ProductoFactory
     {
+        /// <summary>
+        /// Crea una nueva instancia de Producto con los datos proporcionados y lo agrega a la base de datos.
+        /// </summary>
+        /// <param name="nombre">Nombre del producto.</param>
+        /// <param name="descripcion">Descripción del producto.</param>
+        /// <param name="precio">Precio del producto.</param>
+        /// <param name="etiquetas">Lista de etiquetas del producto.</param>
+        /// <param name="pathImage">Ruta de la imagen del producto.</param>
+        /// <param name="idVendedor">ID del vendedor del producto.</param>
+        /// <returns>Una instancia de Producto.</returns>
+
         public async static  Task<Producto> CrearProducto
             (string nombre,
             string descripcion,
@@ -31,20 +45,6 @@ namespace parcialUno.essentials.Factory
                 );
             await productoFire.AddAsync(nuevoProducto);
             return nuevoProducto;
-        }
-        public static async Task<Usuario> CrearUsuario
-            (string username, string nombre, string password, string sector, float dinero)
-        {
-            UsuarioFire usuarioFire = new UsuarioFire();
-            int id = await usuarioFire.GetUltimoIdAsync() + 1;
-            Usuario nuevoUsuario = new Usuario(id, nombre, username, password, sector, dinero);
-            return nuevoUsuario;
-        }
-        public static async Task<Usuario> getUsuarioAsync(int id)
-        {
-            UsuarioFire usuarioFire = new UsuarioFire();
-            var usuarioDict = await usuarioFire.GetOneAsync("id", id);
-            return new Usuario(usuarioDict);
         }
     }
 }

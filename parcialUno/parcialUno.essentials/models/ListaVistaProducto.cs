@@ -7,13 +7,28 @@ using System.Threading.Tasks;
 
 namespace parcialUno.essentials.models
 {
+    /// <summary>
+    /// Clase que representa una lista de vista productos pero facilitando 
+    /// metodos propios y abstractos y encapsulando logica a la que no se quiere
+    /// que el usuario acceda
+    /// </summary>
     public class ListaVistaProducto
     {
+
         private List<VistaProducto> _vistaProductos;
+
+        /// <summary>
+        /// Constructor de la clase ListaVistaProducto. Crea la lista
+        /// </summary>
         public ListaVistaProducto()
         {
             _vistaProductos = new List<VistaProducto>();
         }
+
+        /// <summary>
+        /// Calcula la relevancia de las etiquetas de los productos vistos en la lista.
+        /// </summary>
+        /// <returns>Un diccionario que contiene las etiquetas y su relevancia.</returns>
         public Dictionary<string, float> CalcularRelevancia()
         {
             Dictionary<string, float> valorPorEtiqueta = new Dictionary<string, float>();
@@ -41,8 +56,11 @@ namespace parcialUno.essentials.models
             return valorPorEtiqueta;
         }
 
-
-
+        /// <summary>
+        /// Carga los datos de los productos vistos desde Firebase para un usuario específico.
+        /// </summary>
+        /// <param name="idUsuario">ID del usuario.</param>
+        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         public async Task CargarFireAsync(int idUsuario)
         {
             VistaProductoFire vpFire = new VistaProductoFire();
@@ -50,12 +68,8 @@ namespace parcialUno.essentials.models
             foreach (var productoDict in productosDict)
             {
                 VistaProducto nuevoVP = new VistaProducto(productoDict);
-                AddVistaProducto(nuevoVP);
+                _vistaProductos.Add(nuevoVP);
             }
-        }
-        private void AddVistaProducto(VistaProducto vistaProducto)
-        {
-            _vistaProductos.Add(vistaProducto);
         }
     }
 }
