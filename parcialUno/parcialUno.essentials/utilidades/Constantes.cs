@@ -14,5 +14,6 @@ namespace parcialUno.essentials.utilidades
         public static string ColeccionVentas = "ventas";
         public static string projectId = "parcialuno-b8508";
         public static float comision = 0.2f;
+        public static string archivoContrasenia = "password.bin";
     }
 }

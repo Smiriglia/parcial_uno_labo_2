@@ -26,6 +26,14 @@ namespace parcialUno
                 {
                     var usuario = await Validador.ValidarUsuario(username, password);
                     FormPrincipal nuevoFormulario = new FormPrincipal(usuario);
+                    if (checkBoxGuardar.Checked)
+                    {
+                        LoginRapido.GuardarLoginData(username, password);
+                    }
+                    else
+                    {
+                        LoginRapido.Eliminar();
+                    }
                     this.Hide();
                     nuevoFormulario.ShowDialog();
                     if (nuevoFormulario.DialogResult == DialogResult.OK)
@@ -93,8 +101,19 @@ namespace parcialUno
             FormRegistrarse frmRegistrarse = new FormRegistrarse();
             this.Hide();
             frmRegistrarse.ShowDialog();
-            if (frmRegistrarse.DialogResult == DialogResult.OK) 
+            if (frmRegistrarse.DialogResult == DialogResult.OK)
                 this.Show();
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            var datos = LoginRapido.CargarLoginData();
+            if (datos != null)
+            {
+                txtUsuario.Text = datos["username"];
+                txtPassword.Text = datos["password"];
+                checkBoxGuardar.Checked = true;
+            }
         }
     }
 }

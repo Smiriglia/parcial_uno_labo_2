@@ -43,6 +43,7 @@
             labelRegistrate = new Label();
             labelLimpiar = new Label();
             panel2 = new Panel();
+            checkBoxGuardar = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -191,12 +192,12 @@
             // 
             labelLimpiar.AutoSize = true;
             labelLimpiar.Cursor = Cursors.Hand;
-            labelLimpiar.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelLimpiar.Font = new Font("Bahnschrift", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelLimpiar.ForeColor = Color.FromArgb(64, 64, 64);
-            labelLimpiar.Location = new Point(134, 290);
+            labelLimpiar.Location = new Point(168, 294);
             labelLimpiar.Margin = new Padding(4, 0, 4, 0);
             labelLimpiar.Name = "labelLimpiar";
-            labelLimpiar.Size = new Size(128, 19);
+            labelLimpiar.Size = new Size(94, 14);
             labelLimpiar.TabIndex = 11;
             labelLimpiar.Text = "Limpiar Campos";
             labelLimpiar.Click += labelLimpiar_Click;
@@ -210,7 +211,18 @@
             panel2.Size = new Size(236, 1);
             panel2.TabIndex = 9;
             // 
-            // Form1
+            // checkBoxGuardar
+            // 
+            checkBoxGuardar.AutoSize = true;
+            checkBoxGuardar.Font = new Font("Bahnschrift", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBoxGuardar.Location = new Point(26, 294);
+            checkBoxGuardar.Name = "checkBoxGuardar";
+            checkBoxGuardar.Size = new Size(99, 17);
+            checkBoxGuardar.TabIndex = 12;
+            checkBoxGuardar.Text = "Guardar Datos";
+            checkBoxGuardar.UseVisualStyleBackColor = true;
+            // 
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -229,13 +241,15 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsuario);
             Controls.Add(btnIngresar);
+            Controls.Add(checkBoxGuardar);
             Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
-            Name = "Form1";
+            Name = "FormLogin";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += FormLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -259,5 +273,6 @@
         private Label labelRegistrate;
         private Label labelLimpiar;
         private Panel panel2;
+        private CheckBox checkBoxGuardar;
     }
 }

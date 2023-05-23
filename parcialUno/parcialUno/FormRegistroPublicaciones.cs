@@ -78,6 +78,7 @@ namespace parcialUno
             try
             {
                 await _administrador.EliminarProductoAsync(_productoSeleccionado);
+                await CargarProductos();
             }
             catch ( Exception ex )
             {
