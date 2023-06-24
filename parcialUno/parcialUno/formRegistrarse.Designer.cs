@@ -175,7 +175,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Bahnschrift", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(56, 89);
+            label3.Location = new Point(58, 89);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(180, 42);

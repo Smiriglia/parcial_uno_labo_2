@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fb3pwHWY3n0GXTLjE98Mnwaam9hn/jeubhtT5E3Oin4clYSaxztfp0MlhVib2o1jdXcNlshFEdbTiiA09v8r1w==",
+  "dgSpecHash": "tNEPlqfWH6Lbsj1BrGGqIrvRd6Spc/yN0kOBv/eAixvjhY/Tc4huJZoJSq+9+xKYHC0S5XOudkZnW/FggThuCQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\USUARIO\\source\\repos\\parcial_uno_labo_2\\parcialUno\\parcialUno.essentials\\parcialUno.essentials.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\USUARIO\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\google.api.commonprotos\\2.7.0\\google.api.commonprotos.2.7.0.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\google.api.gax\\4.3.1\\google.api.gax.4.3.1.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\google.api.gax.grpc\\4.3.1\\google.api.gax.grpc.4.3.1.nupkg.sha512",

@@ -32,6 +32,8 @@ namespace parcialUno
                     }
                     else
                     {
+                        txtPassword.Clear();
+                        txtUsuario.Clear();
                         LoginRapido.Eliminar();
                     }
                     this.Hide();

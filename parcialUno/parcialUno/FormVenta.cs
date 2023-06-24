@@ -116,7 +116,7 @@ namespace parcialUno
 
                 if (errorEtiquetaVacia)
                 {
-                    errorProvider1.SetError(txtEtiquetas, "No has elegido una imagen para el producto");
+                    errorProvider1.SetError(txtEtiquetas, "Deberia ingresar las etiquetas");
                     errorProvider1.SetIconPadding(txtEtiquetas, -20);
                 }
                 else if (errotEtiquetaMalFormato)

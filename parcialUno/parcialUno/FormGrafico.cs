@@ -1,4 +1,5 @@
 ﻿using parcialUno.essentials.models;
+using parcialUno.essentials.utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace parcialUno
     public partial class FormGrafico : Form
     {
         Chart? chartGrafico;
+        private Dictionary<string, int> _ventasDict;
         public FormGrafico()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace parcialUno
             Controls.Add(chartGrafico);
         }
 
-        private async Task AñadirDatosChart()
+        private async Task AñadirDatosChartAsync()
         {
             chartGrafico.Series.Clear();
 
@@ -45,10 +47,10 @@ namespace parcialUno
 
 
             await ventas.CargarFireAsync();
-            var ventasDict = ventas.CalcularCantidad();
-            foreach (string clave in ventasDict.Keys)
+            _ventasDict = ventas.CalcularCantidad();
+            foreach (string clave in _ventasDict.Keys)
             {
-                series.Points.AddXY(clave, ventasDict[clave]);
+                series.Points.AddXY(clave, _ventasDict[clave]);
             }
 
             chartGrafico.Series.Add(series);
@@ -58,11 +60,29 @@ namespace parcialUno
         {
             try
             {
-                await AñadirDatosChart();
+                await AñadirDatosChartAsync();
             }
             catch
             {
                 MessageBox.Show("Error al cargar los datos",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string formato = comboBoxExtension.SelectedItem.ToString();
+                string path = $"../../../informes/informeVentas.{formato}";
+                Serializador ser = new Serializador(path, formato);
+                ser.Serializar(_ventasDict);
+                MessageBox.Show("Datos exportados correctamente",
+                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
