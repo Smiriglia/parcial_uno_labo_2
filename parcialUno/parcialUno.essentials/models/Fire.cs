@@ -260,4 +260,9 @@ namespace parcialUno.essentials.models
     {
         public VentaFire() : base(Constantes.ColeccionVentas) { }
     }
+
+    public class ClickFire : FireBase
+    {
+        public ClickFire() : base(Constantes.ColeccionClicks) { }
+    }
 }

@@ -2,6 +2,7 @@
 using parcialUno.essentials.models;
 using parcialUno.essentials.utilidades;
 using parcialUno.userControls;
+using parcialUno.utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace parcialUno
     {
         ListaProductos _carrito;
         Usuario _usuario;
+        private RegistradorClicks<Button> registradorClicks;
         float total;
         public FormCarrito(ListaProductos carrito, Usuario usuario)
         {
@@ -27,6 +29,7 @@ namespace parcialUno
             _carrito = carrito;
             _usuario = usuario;
             ActualizarPrecio();
+            registradorClicks = new RegistradorClicks<Button>(_usuario.Id, Controls);
         }
 
 

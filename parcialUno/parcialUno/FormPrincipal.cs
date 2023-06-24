@@ -21,6 +21,7 @@ using Microsoft.VisualBasic.Logging;
 using System.Security.Policy;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using parcialUno.essentials.utilidades;
+using parcialUno.utilidades;
 
 namespace parcialUno
 {
@@ -30,6 +31,7 @@ namespace parcialUno
         private ListaProductos _productos = new ListaProductos();
         private ListaProductos _carrito = new ListaProductos();
         private bool _menuExpand = false;
+        private RegistradorClicks<Button> registradorClicks;
 
         public ListaProductos Carrito { get { return _carrito; } }
         public FormPrincipal(Usuario usuario)
@@ -39,6 +41,7 @@ namespace parcialUno
             contenedorMenu.Width = contenedorMenu.MinimumSize.Width;
             labelNombre.Text = _usuario.Nombre;
             labelDinero.Text = $"$ {_usuario.Dinero:F2}";
+            registradorClicks = new RegistradorClicks<Button>(_usuario.Id, Controls);
 
             if (usuario.Sector != "comprador")
             {

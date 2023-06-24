@@ -1,18 +1,23 @@
 using Google.Protobuf.WellKnownTypes;
+using Microsoft.Identity.Client;
 using parcialUno.essentials.excepciones;
 using parcialUno.essentials.models;
 using parcialUno.essentials.utilidades;
+using parcialUno.utilidades;
 using System.Windows.Forms;
 
 namespace parcialUno
 {
     public partial class FormLogin : Form
     {
+        
         public FormLogin()
         {
             InitializeComponent();
+            
         }
-
+        
+        
         private async void btnIngresar_Click(object sender, EventArgs e)
         {
             if (btnIngresar.Enabled)

@@ -31,6 +31,8 @@ namespace parcialUno.essentials.utilidades
         /// </summary>
         public static string ColeccionVentas = "ventas";
 
+        public static string ColeccionClicks = "log";
+
         /// <summary>
         /// ID del proyecto de la base de datos FireBase.
         /// </summary>
@@ -45,6 +47,8 @@ namespace parcialUno.essentials.utilidades
         /// Nombre del archivo de contraseñas.
         /// </summary>
         public static string archivoContrasenia = "password.bin";
+
+        
 
     }
 }
