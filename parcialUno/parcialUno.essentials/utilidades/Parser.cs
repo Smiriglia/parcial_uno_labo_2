@@ -20,7 +20,7 @@ namespace parcialUno.essentials.utilidades
         public static List<string> ToStringList(List<object> lista)
         {
             List<string> listaModificada = new List<string>();
-            foreach (string objeto in lista)
+            foreach (object objeto in lista)
             {
                 listaModificada.Add(objeto.ToString());
             }
