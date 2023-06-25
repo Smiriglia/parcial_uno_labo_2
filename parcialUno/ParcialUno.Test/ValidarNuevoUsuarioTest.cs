@@ -121,7 +121,7 @@ namespace ParcialUno.Test
 
             [TestMethod]
             [ExpectedException(typeof(UsuarioTomadoException))]
-            public async Task ValidarNuevoUsuarioAsync_DuplicateUsername_ThrowsUsuarioTomadoException()
+            public async Task ValidarUsuarioTomado()
             {
                 string username = "usuarioExistente";
                 string nombre = "Existing User";
