@@ -94,7 +94,7 @@ namespace parcialUno
         {
             try
             {
-                await Validador.ValidadarNuevoUsuarioAsync
+                await Validador.ValidarNuevoUsuarioAsync
                 (
                     txtUsername.Text,
                     txtNombre.Text,

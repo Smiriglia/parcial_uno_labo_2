@@ -58,7 +58,7 @@ namespace parcialUno.essentials.utilidades
         /// <exception cref="UsuarioInvalidoException">Se produce cuando se proporciona información inválida para crear el usuario.</exception>
         /// <exception cref="ContraseñasNoCoincidenException">Se produce cuando la contraseña y la confirmación de contraseña no coinciden.</exception>
         /// <exception cref="UsuarioTomadoException">Se produce cuando el nombre de usuario ya ha sido tomado.</exception>
-        public static async Task<Usuario> ValidadarNuevoUsuarioAsync(string username, string nombre , string password, string password2)
+        public static async Task<Usuario> ValidarNuevoUsuarioAsync(string username, string nombre , string password, string password2)
         {
             if (nombre == "")
                 throw new UsuarioInvalidoException("Error, El nombre no puede ser vacio");
@@ -84,12 +84,11 @@ namespace parcialUno.essentials.utilidades
         /// <param name="username">Nombre de usuario.</param>
         /// <param name="nombre">Nombre del usuario.</param>
         /// <param name="password">Contraseña.</param>
-        /// <param name="password2">Confirmación de contraseña.</param>
+        /// <param name="txtDinero">Confirmación de contraseña.</param>
         /// <returns>Un objeto Usuario válido si la validación es exitosa y el usuario se crea correctamente.</returns>
         /// <exception cref="UsuarioInvalidoException">Se produce cuando se proporciona información inválida para crear el usuario.</exception>
-        /// <exception cref="ContraseñasNoCoincidenException">Se produce cuando la contraseña y la confirmación de contraseña no coinciden.</exception>
         /// <exception cref="UsuarioTomadoException">Se produce cuando el nombre de usuario ya ha sido tomado.</exception>
-        public static async Task<Usuario> ValidadarNuevoUsuarioAsync
+        public static async Task<Usuario> ValidarNuevoUsuarioAsync
             (string username, string nombre, string password, string sector, string txtDinero)
         {
             float dinero;
