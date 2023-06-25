@@ -93,5 +93,11 @@ namespace parcialUno
             cambiarOpcionActual(sender);
             cargarFormulario(new FormPublicaciones(_administrador));
         }
+
+        private void imgLog_Click(object sender, EventArgs e)
+        {
+            cambiarOpcionActual(sender);
+            cargarFormulario(new FormLog(_administrador));
+        }
     }
 }

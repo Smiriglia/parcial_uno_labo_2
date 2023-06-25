@@ -73,12 +73,15 @@ namespace parcialUno
         {
             try
             {
-                string formato = comboBoxExtension.SelectedItem.ToString();
-                string path = $"../../../informes/informeVentas.{formato}";
-                Serializador ser = new Serializador(path, formato);
-                ser.Serializar(_ventasDict);
-                MessageBox.Show("Datos exportados correctamente",
-                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string path = saveFileDialog1.FileName;
+
+                    Serializador ser = new Serializador(path);
+                    ser.Serializar(_ventasDict);
+                    MessageBox.Show("Datos exportados correctamente",
+                            "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

@@ -9,34 +9,35 @@ using System.Text;
 using System.Threading.Tasks;
 using CsvHelper.Configuration;
 using System.Collections;
+using Google.Protobuf;
 
 namespace parcialUno.essentials.utilidades
 {
     public class Serializador
     {
         private string _path;
-        private string _formato;
-        public Serializador(string path, string formato)
+        private string _extension;
+        public Serializador(string path)
         {
             _path = path;
-            _formato = formato;
+            _extension = Path.GetExtension(path);
         }
 
         public void Serializar(object elemento)
         {
-            if (!string.IsNullOrEmpty(_formato))
+            if (!string.IsNullOrEmpty(_extension))
             {
-                if (_formato == "json")
+                if (_extension == ".json")
                 {
                     SerializarJson(elemento);
                 }
-                else if(_formato == "csv")
+                else if(_extension == ".csv" && elemento is IEnumerable)
                 { 
                     SerializarCsv((IEnumerable)elemento);
                 }
                 else
                 {
-                    throw new NotImplementedException("Formato no implementado");
+                    throw new NotImplementedException("Extension no implementada");
                 }
             }
             
@@ -48,6 +49,7 @@ namespace parcialUno.essentials.utilidades
             {
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     WriteIndented = true,
                 };
                 string jsonSer = JsonSerializer.Serialize(elemento, options);
@@ -63,7 +65,6 @@ namespace parcialUno.essentials.utilidades
                 HasHeaderRecord = false
             };
 
-            // Serializar el diccionario a un archivo CSV
             using (var writer = new StreamWriter(_path))
             using (var csv = new CsvWriter(writer, configuration))
             {

@@ -35,7 +35,7 @@ namespace parcialUno.essentials.models
 
         public Click(Dictionary<string, object> usuarioDict) :
             this((int)(long)usuarioDict["id"],
-                (int)usuarioDict["idUsuario"],
+                (int)(long)usuarioDict["idUsuario"],
                 (string)usuarioDict["nombreControl"],
                 Parser.ToDateTime((string)usuarioDict["fecha"]))
         { }

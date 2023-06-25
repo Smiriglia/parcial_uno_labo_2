@@ -35,6 +35,7 @@
             imgUsuarios = new PictureBox();
             imgVentas = new PictureBox();
             imgPublicaciones = new PictureBox();
+            imgLog = new PictureBox();
             pictureBox1 = new PictureBox();
             contenedorPrincipal = new Panel();
             ((System.ComponentModel.ISupportInitialize)imgCerrar).BeginInit();
@@ -43,6 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)imgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgVentas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgPublicaciones).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -67,11 +69,12 @@
             flowLayoutPanel1.Controls.Add(imgUsuarios);
             flowLayoutPanel1.Controls.Add(imgVentas);
             flowLayoutPanel1.Controls.Add(imgPublicaciones);
+            flowLayoutPanel1.Controls.Add(imgLog);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(0, 135);
+            flowLayoutPanel1.Location = new Point(0, 112);
             flowLayoutPanel1.Margin = new Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(64, 209);
+            flowLayoutPanel1.Size = new Size(64, 260);
             flowLayoutPanel1.TabIndex = 11;
             // 
             // imgGrafico
@@ -138,6 +141,22 @@
             imgPublicaciones.MouseEnter += imgDashboard_MouseEnter;
             imgPublicaciones.MouseLeave += imgDashboard_MouseLeave;
             // 
+            // imgLog
+            // 
+            imgLog.BackColor = Color.Gray;
+            imgLog.Cursor = Cursors.Hand;
+            imgLog.Image = (Image)resources.GetObject("imgLog.Image");
+            imgLog.Location = new Point(0, 200);
+            imgLog.Margin = new Padding(0);
+            imgLog.Name = "imgLog";
+            imgLog.Size = new Size(64, 50);
+            imgLog.SizeMode = PictureBoxSizeMode.Zoom;
+            imgLog.TabIndex = 1;
+            imgLog.TabStop = false;
+            imgLog.Click += imgLog_Click;
+            imgLog.MouseEnter += imgDashboard_MouseEnter;
+            imgLog.MouseLeave += imgDashboard_MouseLeave;
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -175,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)imgUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgVentas).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgPublicaciones).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -189,5 +209,6 @@
         private PictureBox imgUsuarios;
         private PictureBox imgVentas;
         private PictureBox imgPublicaciones;
+        private PictureBox imgLog;
     }
 }
