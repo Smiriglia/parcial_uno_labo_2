@@ -38,7 +38,7 @@ namespace parcialUno
             ProductoCarritoUC nuevoProductoCarritoUC;
             foreach (Producto producto in _carrito)
             {
-                nuevoProductoCarritoUC = new ProductoCarritoUC(this, producto);
+                nuevoProductoCarritoUC = new ProductoCarritoUC(producto, EliminarProducto);
                 contenedorCarrito.Controls.Add(nuevoProductoCarritoUC);
             }
 
@@ -93,10 +93,10 @@ namespace parcialUno
             }
             btnComprar.Enabled = true;
         }
-        public void EliminarProducto(Producto producto, ProductoCarritoUC productoCarritoUC)
+        public void EliminarProducto(ProductoCarritoUC sender, Producto producto)
         {
             _carrito.RemoveProducto(producto);
-            contenedorCarrito.Controls.Remove(productoCarritoUC);
+            contenedorCarrito.Controls.Remove(sender);
             ActualizarPrecio();
         }
 

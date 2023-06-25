@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
+using parcialUno.essentials.eventos;
 using parcialUno.essentials.Factory;
 using parcialUno.essentials.models;
 
@@ -15,18 +16,18 @@ namespace parcialUno.userControls
 {
     public partial class ProductoUC : UserControl
     {
+        private event Compra _funcCompra;
         private int _idUsuario;
         private Producto _producto;
-        private ListaProductos _carrito;
-        public ProductoUC(Producto producto, int idUsuario, ListaProductos carrito)
+        public ProductoUC(Producto producto, int idUsuario, Compra funcCompra)
         {
             _producto = producto;
             _idUsuario = idUsuario;
-            _carrito = carrito;
             InitializeComponent();
             labelNombre.Text = producto.Nombre;
             labelPrecio.Text = $"$ {producto.Precio:F2}";
             imgProducto.Image = Image.FromFile(producto.ImagePath);
+            _funcCompra = funcCompra;
         }
 
         private void ProductoUC_MouseEnter(object sender, EventArgs e)
@@ -46,12 +47,8 @@ namespace parcialUno.userControls
             if (nuevaVp != null)
                 await nuevaVp.AddFireAsync();
 
-            FormCompra frmCompra = new FormCompra(_producto);
+            FormCompra frmCompra = new FormCompra(_producto, _funcCompra);
             frmCompra.ShowDialog();
-            if (frmCompra.DialogResult == DialogResult.OK)
-            {
-                _carrito.AddProducto(_producto);
-            }
         }
     }
 }

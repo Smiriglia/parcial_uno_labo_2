@@ -70,7 +70,7 @@ namespace parcialUno
 
                 foreach (Producto producto in _productos)
                 {
-                    nuevoProductoUC = new ProductoUC(producto, _usuario.Id, _carrito);
+                    nuevoProductoUC = new ProductoUC(producto, _usuario.Id, AñadirProducto);
                     containerProductos.Controls.Add(nuevoProductoUC);
                 }
             }
@@ -185,6 +185,11 @@ namespace parcialUno
 
             if (frmAdmin.DialogResult == DialogResult.OK)
                 this.Show();
+        }
+
+        private void AñadirProducto(Producto producto)
+        {
+            Carrito.AddProducto(producto);
         }
     }
 }
