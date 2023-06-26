@@ -1,5 +1,6 @@
 ﻿using parcialUno.essentials.eventos;
 using parcialUno.essentials.models;
+using parcialUno.utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,8 @@ namespace parcialUno
     {
         private event Compra _comprar;
         private Producto _producto;
-        public FormCompra(Producto producto, Compra añadirCarrito)
+        RegistradorClicks _registradorClicks;
+        public FormCompra(Producto producto, Compra añadirCarrito, int idUsuario)
         {
 
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace parcialUno
             labelNombre.Text = producto.Nombre;
             labelPrecio.Text = $"$ {producto.Precio:F2}";
             imgProducto.Image = Image.FromFile(producto.ImagePath);
+            _registradorClicks = new RegistradorClicks(idUsuario, Controls);
             _comprar += añadirCarrito;
         }
 

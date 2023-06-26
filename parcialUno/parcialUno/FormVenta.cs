@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using parcialUno.essentials.Factory;
 using parcialUno.essentials.models;
+using parcialUno.utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,10 +19,12 @@ namespace parcialUno
     {
         private string _pathImage = "";
         private int _idUsuario;
+        private RegistradorClicks _registradorClicks;
         public FormVenta(int idUsuario)
         {
             _idUsuario = idUsuario;
             InitializeComponent();
+            _registradorClicks = new RegistradorClicks(_idUsuario, Controls);
         }
 
         private void imgProducto_Click(object sender, EventArgs e)

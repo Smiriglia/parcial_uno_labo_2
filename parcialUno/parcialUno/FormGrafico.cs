@@ -73,6 +73,7 @@ namespace parcialUno
         {
             try
             {
+                saveFileDialog1.FileName = "informe";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string path = saveFileDialog1.FileName;

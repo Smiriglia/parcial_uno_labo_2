@@ -31,7 +31,7 @@ namespace parcialUno
         private ListaProductos _productos = new ListaProductos();
         private ListaProductos _carrito = new ListaProductos();
         private bool _menuExpand = false;
-        private RegistradorClicks<Button> registradorClicks;
+        private RegistradorClicks registradorClicks;
 
         public ListaProductos Carrito { get { return _carrito; } }
         public FormPrincipal(Usuario usuario)
@@ -41,7 +41,7 @@ namespace parcialUno
             contenedorMenu.Width = contenedorMenu.MinimumSize.Width;
             labelNombre.Text = _usuario.Nombre;
             labelDinero.Text = $"$ {_usuario.Dinero:F2}";
-            registradorClicks = new RegistradorClicks<Button>(_usuario.Id, Controls);
+            registradorClicks = new RegistradorClicks(_usuario.Id, Controls);
 
             if (usuario.Sector != "comprador")
             {
@@ -190,6 +190,14 @@ namespace parcialUno
         private void AñadirProducto(Producto producto)
         {
             Carrito.AddProducto(producto);
+        }
+
+        private void contenedorCompras_Click(object sender, EventArgs e)
+        {
+            var formCompra = new FormCompras(_usuario);
+            this.Hide();
+            formCompra.ShowDialog();
+            this.Show();
         }
     }
 }

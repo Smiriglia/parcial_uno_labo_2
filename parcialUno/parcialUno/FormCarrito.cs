@@ -21,7 +21,7 @@ namespace parcialUno
     {
         ListaProductos _carrito;
         Usuario _usuario;
-        private RegistradorClicks<Button> registradorClicks;
+        private RegistradorClicks _registradorClicks;
         float total;
         public FormCarrito(ListaProductos carrito, Usuario usuario)
         {
@@ -29,7 +29,7 @@ namespace parcialUno
             _carrito = carrito;
             _usuario = usuario;
             ActualizarPrecio();
-            registradorClicks = new RegistradorClicks<Button>(_usuario.Id, Controls);
+            _registradorClicks = new RegistradorClicks(_usuario.Id, Controls);
         }
 
 

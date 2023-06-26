@@ -8,7 +8,7 @@ using static System.Windows.Forms.Control;
 
 namespace parcialUno.utilidades
 {
-    public class RegistradorClicks<T>
+    public class RegistradorClicks
     {
         int _idUsuario;
         public bool Activo { get; set; }
@@ -16,14 +16,21 @@ namespace parcialUno.utilidades
         {
             _idUsuario = idUsuario;
             Activo = true;
+            agregarEventoControls(controls);
+
+
+        }
+        
+        private void agregarEventoControls(ControlCollection controls)
+        {
             foreach (Control control in controls)
             {
-                if (control.GetType() == typeof(T))
+                if (control.Controls != null)
                 {
-                    control.Click += Registrar;
+                    agregarEventoControls(control.Controls);
                 }
+                control.Click += Registrar;
             }
-            
         }
 
         private async void Registrar(object sender, EventArgs e)

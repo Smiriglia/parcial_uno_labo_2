@@ -47,7 +47,7 @@ namespace parcialUno.userControls
             if (nuevaVp != null)
                 await nuevaVp.AddFireAsync();
 
-            FormCompra frmCompra = new FormCompra(_producto, _funcCompra);
+            FormCompra frmCompra = new FormCompra(_producto, _funcCompra, _idUsuario);
             frmCompra.ShowDialog();
         }
     }
